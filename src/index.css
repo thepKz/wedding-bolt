@@ -9,29 +9,45 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  background: linear-gradient(135deg, #F8F6F0 0%, #F7E7CE 50%, #E8B4B8 100%);
 }
 
-.heart-path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: draw-heart 2s ease-in-out forwards;
+.luxury-bg {
+  background: linear-gradient(135deg, 
+    #F8F6F0 0%, 
+    #F7E7CE 25%, 
+    #E8B4B8 50%, 
+    #D4A5A5 75%, 
+    #C08497 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
-@keyframes draw-heart {
-  to {
-    stroke-dashoffset: 0;
-  }
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.bokeh-bg {
-  background: radial-gradient(circle at 20% 80%, rgba(252, 231, 243, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(254, 215, 215, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(249, 168, 212, 0.2) 0%, transparent 50%);
+.sparkle-effect {
+  position: relative;
+  overflow: hidden;
 }
 
-.floating-hearts {
+.sparkle-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.floating-petals {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -39,27 +55,54 @@ body {
   pointer-events: none;
 }
 
-.floating-heart {
+.petal {
   position: absolute;
-  color: rgba(249, 168, 212, 0.3);
-  animation: float 6s ease-in-out infinite;
+  color: rgba(212, 165, 165, 0.6);
+  animation: float 8s ease-in-out infinite;
+  font-size: 1.5rem;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
-  50% { transform: translateY(-20px) rotate(5deg); opacity: 0.6; }
+.golden-border {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, #FFD700, #FFA500, #FFD700) border-box;
 }
 
-.message-container {
-  animation: fade-up 1s ease-out 0.5s both;
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.response-button {
+.text-shadow-gold {
+  text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+.hover-lift {
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #fbb6ce, #f9a8d4);
 }
 
-.response-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(249, 168, 212, 0.4);
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.wedding-card {
+  background: linear-gradient(145deg, #ffffff, #f8f6f0);
+  box-shadow: 
+    20px 20px 60px #d1d1d1,
+    -20px -20px 60px #ffffff;
+}
+
+.ornament {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .luxury-bg {
+    background-size: 200% 200%;
+  }
 }

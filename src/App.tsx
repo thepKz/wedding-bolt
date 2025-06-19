@@ -1,89 +1,130 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import HeartIcon from './components/HeartIcon';
-import WelcomeMessage from './components/WelcomeMessage';
-import FloatingHearts from './components/FloatingHearts';
+import Confetti from 'react-confetti';
+import WelcomeScreen from './components/WelcomeScreen';
+import InvitationCard from './components/InvitationCard';
+import WeddingDetails from './components/WeddingDetails';
+import RSVPForm from './components/RSVPForm';
+import PhotoGallery from './components/PhotoGallery';
+import FloatingElements from './components/FloatingElements';
+import MusicPlayer from './components/MusicPlayer';
+
+type Screen = 'welcome' | 'invitation' | 'details' | 'rsvp' | 'gallery' | 'celebration';
 
 function App() {
-  const [currentStep, setCurrentStep] = useState<'landing' | 'opening' | 'welcome'>('landing');
-  const [showHeartAnimation, setShowHeartAnimation] = useState(false);
+  const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
-  const handleHeartClick = () => {
-    setShowHeartAnimation(true);
-    setCurrentStep('opening');
-    
-    // Transition to welcome screen after heart opening animation
-    setTimeout(() => {
-      setCurrentStep('welcome');
-    }, 2500);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleScreenChange = (screen: Screen) => {
+    setCurrentScreen(screen);
+    if (screen === 'celebration') {
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
+    }
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen luxury-bg relative overflow-hidden">
+      {showConfetti && (
+        <Confetti
+          width={windowDimensions.width}
+          height={windowDimensions.height}
+          recycle={false}
+          numberOfPieces={200}
+          colors={['#FFD700', '#FFA500', '#FF69B4', '#FF1493', '#DC143C']}
+        />
+      )}
+      
+      <FloatingElements />
+      <MusicPlayer />
+      
       <AnimatePresence mode="wait">
-        {currentStep === 'landing' && (
-          <motion.div
-            key="landing"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="min-h-screen bg-gradient-to-br from-white via-pastel-pink to-soft-coral flex flex-col items-center justify-center px-6"
-          >
-            <div className="text-center">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mb-8"
-              >
-                <HeartIcon 
-                  onClick={handleHeartClick}
-                  animate={!showHeartAnimation}
-                  showAnimation={showHeartAnimation}
-                />
-              </motion.div>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-gray-600 font-light text-lg md:text-xl font-comfortaa"
-              >
-                Nhấn nhẹ để bước vào tim anh
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-
-        {currentStep === 'opening' && (
-          <motion.div
-            key="opening"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.2 }}
-            transition={{ duration: 0.5 }}
-            className="min-h-screen bg-gradient-to-br from-white via-pastel-pink to-soft-coral flex items-center justify-center"
-          >
-            <HeartIcon 
-              onClick={() => {}}
-              animate={false}
-              showAnimation={true}
-              isOpening={true}
-            />
-          </motion.div>
-        )}
-
-        {currentStep === 'welcome' && (
-          <motion.div
+        {currentScreen === 'welcome' && (
+          <WelcomeScreen 
             key="welcome"
-            initial={{ opacity: 0, scale: 0.9 }}
+            onNext={() => handleScreenChange('invitation')} 
+          />
+        )}
+        
+        {currentScreen === 'invitation' && (
+          <InvitationCard 
+            key="invitation"
+            onNext={() => handleScreenChange('details')}
+            onBack={() => handleScreenChange('welcome')}
+          />
+        )}
+        
+        {currentScreen === 'details' && (
+          <WeddingDetails 
+            key="details"
+            onNext={() => handleScreenChange('rsvp')}
+            onBack={() => handleScreenChange('invitation')}
+          />
+        )}
+        
+        {currentScreen === 'rsvp' && (
+          <RSVPForm 
+            key="rsvp"
+            onNext={() => handleScreenChange('gallery')}
+            onBack={() => handleScreenChange('details')}
+            onCelebrate={() => handleScreenChange('celebration')}
+          />
+        )}
+        
+        {currentScreen === 'gallery' && (
+          <PhotoGallery 
+            key="gallery"
+            onBack={() => handleScreenChange('rsvp')}
+          />
+        )}
+        
+        {currentScreen === 'celebration' && (
+          <motion.div
+            key="celebration"
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="min-h-screen bg-gradient-to-br from-gentle-rose via-warm-pink to-soft-coral bokeh-bg relative"
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="min-h-screen flex items-center justify-center p-6"
           >
-            <FloatingHearts />
-            <WelcomeMessage />
+            <div className="text-center glass-effect p-12 rounded-3xl golden-border max-w-2xl">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="text-8xl mb-6"
+              >
+                💍
+              </motion.div>
+              <h1 className="text-4xl md:text-6xl font-great-vibes text-gold mb-6 text-shadow-gold">
+                Cảm ơn bạn!
+              </h1>
+              <p className="text-xl text-burgundy font-montserrat mb-8">
+                Chúng tôi rất mong được chia sẻ ngày đặc biệt này cùng bạn
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleScreenChange('welcome')}
+                className="px-8 py-4 bg-gradient-to-r from-gold to-rose-gold text-white font-semibold rounded-full hover-lift"
+              >
+                Quay lại trang chủ
+              </motion.button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
