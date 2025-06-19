@@ -10,7 +10,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNext }) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
       className="min-h-screen flex items-center justify-center p-6"
     >
@@ -18,79 +18,64 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNext }) => {
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 1.5, type: "spring", bounce: 0.3 }}
-          className="mb-8"
+          transition={{ duration: 1.2, type: "spring", bounce: 0.3 }}
+          className="mb-12"
         >
-          <div className="text-9xl md:text-[12rem] animate-pulse-gold">
-            💒
+          <div className="w-32 h-32 mx-auto mb-8 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent-dark rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute inset-2 bg-gradient-to-r from-accent to-accent-dark rounded-full flex items-center justify-center">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" 
+                      fill="currentColor"/>
+              </svg>
+            </div>
           </div>
         </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-5xl md:text-7xl font-great-vibes text-gold mb-6 text-shadow-gold"
-        >
-          Wedding Invitation
-        </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mb-8"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mb-12"
         >
-          <p className="text-2xl md:text-3xl font-dancing text-burgundy mb-4">
-            Chúng tôi trân trọng mời bạn
+          <h1 className="text-6xl md:text-8xl font-crimson gradient-text mb-6 text-shadow">
+            Minh & Hương
+          </h1>
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8"></div>
+          <p className="text-xl md:text-2xl text-text-secondary font-light">
+            Trân trọng kính mời
           </p>
-          <p className="text-lg md:text-xl font-montserrat text-navy opacity-80">
-            Đến dự lễ cưới của chúng tôi
-          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mb-12"
+        >
+          <div className="glass-card p-8 inline-block">
+            <div className="text-4xl md:text-5xl font-crimson text-white mb-2">
+              15
+            </div>
+            <div className="text-lg text-text-secondary">
+              Tháng 12, 2024
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
         >
           <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 10px 30px rgba(255, 215, 0, 0.4)"
-            }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onNext}
-            className="px-12 py-4 bg-gradient-to-r from-gold via-rose-gold to-gold text-white font-semibold text-lg rounded-full shadow-lg hover-lift sparkle-effect"
+            className="accent-button px-12 py-4 rounded-full text-white font-medium text-lg"
           >
-            Mở thiệp mời ✨
+            Xem lời mời
           </motion.button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="mt-12 flex justify-center space-x-8 text-4xl"
-        >
-          <motion.span
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            🌹
-          </motion.span>
-          <motion.span
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-          >
-            💕
-          </motion.span>
-          <motion.span
-            animate={{ rotate: [0, -10, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-          >
-            🌹
-          </motion.span>
         </motion.div>
       </div>
     </motion.div>

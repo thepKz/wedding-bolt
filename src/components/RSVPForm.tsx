@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 interface RSVPFormProps {
   onNext: () => void;
   onBack: () => void;
-  onCelebrate: () => void;
+  onSubmit: () => void;
 }
 
-const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
+const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onSubmit }) => {
   const [formData, setFormData] = useState({
     name: '',
     guests: '1',
@@ -18,9 +18,16 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name && formData.attendance) {
-      onCelebrate();
+      onSubmit();
     }
   };
+
+  const attendanceOptions = [
+    { value: 'both', label: 'Tham dự cả hai buổi', icon: '✨' },
+    { value: 'ceremony', label: 'Chỉ tham dự lễ thành hôn', icon: '⛪' },
+    { value: 'reception', label: 'Chỉ tham dự tiệc cưới', icon: '🥂' },
+    { value: 'no', label: 'Rất tiếc không thể tham dự', icon: '💔' },
+  ];
 
   return (
     <motion.div
@@ -34,13 +41,13 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-8"
         >
-          <h1 className="text-4xl md:text-5xl font-great-vibes text-gold mb-4 text-shadow-gold">
+          <h1 className="text-4xl md:text-5xl font-crimson gradient-text mb-4">
             Xác Nhận Tham Dự
           </h1>
-          <p className="text-lg text-navy font-montserrat">
+          <p className="text-lg text-text-secondary">
             Vui lòng cho chúng tôi biết bạn có thể tham dự không
           </p>
         </motion.div>
@@ -48,12 +55,12 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
         <motion.form
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           onSubmit={handleSubmit}
-          className="glass-effect p-8 rounded-3xl golden-border space-y-6"
+          className="glass-card p-8 space-y-6"
         >
           <div>
-            <label className="block text-burgundy font-semibold mb-2">
+            <label className="block text-white font-medium mb-3">
               Họ và tên *
             </label>
             <input
@@ -61,19 +68,19 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full p-4 rounded-xl border-2 border-champagne focus:border-gold outline-none transition-colors bg-white/80"
+              className="w-full p-4 rounded-xl form-input text-white placeholder-text-muted"
               placeholder="Nhập họ và tên của bạn"
             />
           </div>
 
           <div>
-            <label className="block text-burgundy font-semibold mb-2">
+            <label className="block text-white font-medium mb-3">
               Số lượng khách
             </label>
             <select
               value={formData.guests}
               onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-              className="w-full p-4 rounded-xl border-2 border-champagne focus:border-gold outline-none transition-colors bg-white/80"
+              className="w-full p-4 rounded-xl form-input text-white"
             >
               <option value="1">1 người</option>
               <option value="2">2 người</option>
@@ -83,20 +90,15 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
           </div>
 
           <div>
-            <label className="block text-burgundy font-semibold mb-2">
+            <label className="block text-white font-medium mb-3">
               Tham dự *
             </label>
             <div className="space-y-3">
-              {[
-                { value: 'both', label: '✨ Tham dự cả hai buổi', icon: '💒🍽️' },
-                { value: 'ceremony', label: '⛪ Chỉ tham dự lễ thành hôn', icon: '💒' },
-                { value: 'reception', label: '🍽️ Chỉ tham dự tiệc cưới', icon: '🍽️' },
-                { value: 'no', label: '😢 Rất tiếc không thể tham dự', icon: '💔' },
-              ].map((option) => (
+              {attendanceOptions.map((option) => (
                 <motion.label
                   key={option.value}
                   whileHover={{ scale: 1.02 }}
-                  className="flex items-center p-4 rounded-xl border-2 border-champagne hover:border-gold cursor-pointer transition-colors bg-white/60"
+                  className="flex items-center p-4 rounded-xl form-input cursor-pointer hover:bg-white/10 transition-colors"
                 >
                   <input
                     type="radio"
@@ -104,24 +106,24 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
                     value={option.value}
                     checked={formData.attendance === option.value}
                     onChange={(e) => setFormData({ ...formData, attendance: e.target.value })}
-                    className="mr-4"
+                    className="mr-4 accent-accent"
                   />
-                  <span className="text-2xl mr-3">{option.icon}</span>
-                  <span className="text-navy font-medium">{option.label}</span>
+                  <span className="text-xl mr-3">{option.icon}</span>
+                  <span className="text-white">{option.label}</span>
                 </motion.label>
               ))}
             </div>
           </div>
 
           <div>
-            <label className="block text-burgundy font-semibold mb-2">
+            <label className="block text-white font-medium mb-3">
               Lời chúc (tùy chọn)
             </label>
             <textarea
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={4}
-              className="w-full p-4 rounded-xl border-2 border-champagne focus:border-gold outline-none transition-colors bg-white/80 resize-none"
+              className="w-full p-4 rounded-xl form-input text-white placeholder-text-muted resize-none"
               placeholder="Gửi lời chúc đến cô dâu chú rể..."
             />
           </div>
@@ -132,7 +134,7 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={onBack}
-              className="px-8 py-3 border-2 border-gold text-gold font-semibold rounded-full hover:bg-gold hover:text-white transition-all duration-300"
+              className="modern-button px-8 py-3 rounded-full font-medium"
             >
               ← Quay lại
             </motion.button>
@@ -140,9 +142,9 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onNext, onBack, onCelebrate }) => {
               type="submit"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex-1 px-8 py-3 bg-gradient-to-r from-gold to-rose-gold text-white font-semibold rounded-full hover-lift sparkle-effect"
+              className="flex-1 accent-button px-8 py-3 rounded-full text-white font-medium"
             >
-              Gửi xác nhận 💕
+              Gửi xác nhận
             </motion.button>
           </div>
         </motion.form>

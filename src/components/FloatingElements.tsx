@@ -2,28 +2,28 @@ import React from 'react';
 
 const FloatingElements: React.FC = () => {
   const elements = [
-    { emoji: '🌹', delay: 0 },
-    { emoji: '💕', delay: 1 },
-    { emoji: '✨', delay: 2 },
-    { emoji: '🦋', delay: 3 },
-    { emoji: '💐', delay: 4 },
-    { emoji: '🌸', delay: 5 },
+    { symbol: '✦', size: '12px', left: '10%', top: '20%', delay: '0s' },
+    { symbol: '✧', size: '8px', left: '85%', top: '15%', delay: '2s' },
+    { symbol: '✦', size: '10px', left: '15%', top: '70%', delay: '4s' },
+    { symbol: '✧', size: '14px', left: '80%', top: '75%', delay: '6s' },
+    { symbol: '✦', size: '6px', left: '50%', top: '10%', delay: '8s' },
+    { symbol: '✧', size: '16px', left: '5%', top: '50%', delay: '10s' },
   ];
 
   return (
-    <div className="floating-petals">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden">
       {elements.map((element, index) => (
         <div
           key={index}
-          className="petal"
+          className="floating-element text-white/20"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${element.delay}s`,
-            animationDuration: `${6 + Math.random() * 4}s`,
+            left: element.left,
+            top: element.top,
+            fontSize: element.size,
+            animationDelay: element.delay,
           }}
         >
-          {element.emoji}
+          {element.symbol}
         </div>
       ))}
     </div>

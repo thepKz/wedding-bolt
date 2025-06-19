@@ -53,18 +53,18 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onBack }) => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-great-vibes text-gold mb-4 text-shadow-gold">
+          <h1 className="text-4xl md:text-5xl font-crimson gradient-text mb-4">
             Kỷ Niệm Của Chúng Tôi
           </h1>
-          <p className="text-lg text-navy font-montserrat">
+          <p className="text-lg text-text-secondary">
             Những khoảnh khắc đẹp trong hành trình yêu thương
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
           {photos.map((photo, index) => (
             <motion.div
               key={photo.id}
@@ -73,16 +73,16 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onBack }) => {
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               whileHover={{ scale: 1.05 }}
               onClick={() => setSelectedPhoto(index)}
-              className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-lg hover-lift"
+              className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer glass-card"
             >
               <img
                 src={photo.url}
                 alt={photo.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 photo-overlay opacity-0 hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 text-white">
-                  <p className="font-semibold">{photo.title}</p>
+                  <p className="font-medium">{photo.title}</p>
                 </div>
               </div>
             </motion.div>
@@ -92,14 +92,14 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onBack }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
           className="text-center"
         >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onBack}
-            className="px-8 py-3 bg-gradient-to-r from-gold to-rose-gold text-white font-semibold rounded-full hover-lift"
+            className="accent-button px-8 py-3 rounded-full text-white font-medium"
           >
             ← Quay lại
           </motion.button>
@@ -114,7 +114,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onBack }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedPhoto(null)}
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -129,15 +129,15 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onBack }) => {
                 className="w-full h-full object-contain rounded-2xl"
               />
               <div className="absolute bottom-4 left-4 right-4 text-center">
-                <div className="glass-effect p-4 rounded-xl">
-                  <h3 className="text-white text-xl font-semibold">
+                <div className="glass-card p-4">
+                  <h3 className="text-white text-xl font-medium">
                     {photos[selectedPhoto].title}
                   </h3>
                 </div>
               </div>
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-xl hover:bg-white/30 transition-colors"
+                className="absolute top-4 right-4 w-10 h-10 glass-card rounded-full flex items-center justify-center text-white text-xl hover:bg-white/20 transition-colors"
               >
                 ×
               </button>
