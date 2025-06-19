@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+.heart-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-heart 2s ease-in-out forwards;
+}
+
+@keyframes draw-heart {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.bokeh-bg {
+  background: radial-gradient(circle at 20% 80%, rgba(252, 231, 243, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(254, 215, 215, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(249, 168, 212, 0.2) 0%, transparent 50%);
+}
+
+.floating-hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  color: rgba(249, 168, 212, 0.3);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-20px) rotate(5deg); opacity: 0.6; }
+}
+
+.message-container {
+  animation: fade-up 1s ease-out 0.5s both;
+}
+
+.response-button {
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #fbb6ce, #f9a8d4);
+}
+
+.response-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(249, 168, 212, 0.4);
+}
