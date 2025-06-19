@@ -8,25 +8,24 @@ export default {
     extend: {
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
-        'crimson': ['Crimson Text', 'serif'],
+        'playfair': ['Playfair Display', 'serif'],
+        'dancing': ['Dancing Script', 'cursive'],
       },
       colors: {
-        'dark': '#0a0a0a',
-        'dark-light': '#1a1a1a',
-        'dark-lighter': '#2a2a2a',
-        'accent': '#667eea',
-        'accent-dark': '#764ba2',
-        'text-primary': '#ffffff',
-        'text-secondary': '#a0a0a0',
-        'text-muted': '#666666',
+        'ivory': '#FFFAF0',
+        'light-beige': '#F5EFE6',
+        'dusty-pink': '#D7B9B9',
+        'champagne': '#F4E1C1',
+        'pale-slate': '#839AA8',
+        'warm-white': '#FEFCF8',
+        'soft-gray': '#F8F6F2',
       },
       animation: {
-        'fade-in': 'fadeIn 0.8s ease-out',
+        'fade-in': 'fadeIn 1s ease-out',
         'slide-up': 'slideUp 0.8s ease-out',
-        'slide-in-left': 'slideInLeft 0.8s ease-out',
-        'slide-in-right': 'slideInRight 0.8s ease-out',
         'scale-in': 'scaleIn 0.6s ease-out',
-        'float': 'float 8s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'shimmer': 'shimmer 2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -37,23 +36,18 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(30px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        slideInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-30px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        slideInRight: {
-          '0%': { opacity: '0', transform: 'translateX(30px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
         scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '25%': { transform: 'translateY(-20px) rotate(5deg)' },
-          '50%': { transform: 'translateY(-10px) rotate(-5deg)' },
-          '75%': { transform: 'translateY(-30px) rotate(3deg)' },
+          '33%': { transform: 'translateY(-10px) rotate(2deg)' },
+          '66%': { transform: 'translateY(-5px) rotate(-2deg)' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
       },
     },
