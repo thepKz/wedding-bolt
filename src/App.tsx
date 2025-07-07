@@ -106,21 +106,21 @@ function App() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black gothic-no-select">
-      {/* Enhanced Gothic Chapter Progress Indicator */}
-      <div className="fixed top-8 left-8 z-50">
+      {/* Enhanced Gothic Chapter Progress Indicator với z-index cao hơn */}
+      <div className="fixed top-4 left-4 z-[100]">
         <motion.div 
-          className="bg-black/95 backdrop-blur-xl rounded-lg p-8 gothic-border gothic-shadow-deep"
+          className="bg-black/95 backdrop-blur-xl rounded-lg p-6 gothic-border gothic-shadow-deep"
           initial={{ opacity: 0, x: -100, scale: 0.8 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 2, ease: "easeOut" }}
         >
-          <h3 className="gothic-title text-amber-200 text-2xl mb-3 tracking-widest">
+          <h3 className="gothic-title text-amber-200 text-xl mb-2 tracking-widest">
             {currentChapterInfo?.title}
           </h3>
-          <p className="gothic-body text-amber-100/80 text-base mb-6 leading-relaxed italic">
+          <p className="gothic-body text-amber-100/90 text-sm mb-4 leading-relaxed italic">
             {currentChapterInfo?.subtitle}
           </p>
-          <div className="flex space-x-3">
+          <div className="flex space-x-2">
             {chapters.map((chapter, index) => {
               const isActive = chapter.id === currentChapter;
               const isCompleted = index < chapters.findIndex(ch => ch.id === currentChapter);
@@ -128,7 +128,7 @@ function App() {
               return (
                 <motion.div
                   key={chapter.id}
-                  className={`w-4 h-4 transition-all duration-1000 ${
+                  className={`w-3 h-3 transition-all duration-1000 ${
                     isActive 
                       ? 'bg-amber-400 gothic-shadow-gold scale-125 rounded-full' 
                       : isCompleted
@@ -150,23 +150,23 @@ function App() {
         </motion.div>
       </div>
 
-      {/* Enhanced Gothic Scroll Hint */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+      {/* Enhanced Gothic Scroll Hint với z-index cao hơn */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-[100]">
         <motion.div
-          className="bg-black/95 backdrop-blur-xl rounded-full px-8 py-4 gothic-border gothic-shadow-gold"
+          className="bg-black/95 backdrop-blur-xl rounded-full px-6 py-3 gothic-border gothic-shadow-gold"
           animate={{ 
-            y: [0, -20, 0],
+            y: [0, -10, 0],
             scale: [1, 1.05, 1],
           }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
-          <p className="gothic-body text-amber-200/90 text-base font-medium tracking-wide">
+          <p className="gothic-body text-amber-200/90 text-sm font-medium tracking-wide">
             Cuộn để khám phá bóng tối...
           </p>
         </motion.div>
       </div>
 
-      {/* Gothic Chapter Content with Enhanced Dramatic Transitions */}
+      {/* Gothic Chapter Content với z-index thấp hơn */}
       <AnimatePresence mode="wait" custom={scrollDirection}>
         <motion.div
           key={currentChapter}
@@ -176,7 +176,7 @@ function App() {
           exit="out"
           variants={chapterVariants}
           transition={chapterTransition}
-          className="absolute inset-0 gothic-transform"
+          className="absolute inset-0 gothic-transform z-[10]"
         >
           {renderChapterContent()}
         </motion.div>
@@ -189,31 +189,31 @@ function App() {
 
 const PrologueChapter = () => (
   <div className="w-full h-screen flex items-center justify-center relative overflow-hidden gothic-bg-cathedral">
-    {/* Enhanced Gothic cathedral-like background with layers */}
-    <div className="absolute inset-0">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
+    {/* Enhanced Gothic cathedral-like background với z-index thấp */}
+    <div className="absolute inset-0 z-[1]">
+      <div className="absolute top-0 left-0 w-full h-full bg-black/80"></div>
       
       {/* Multiple Gothic ambient light sources */}
-      <div className="absolute top-32 left-32 w-96 h-96 bg-amber-700/15 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-32 right-32 w-80 h-80 bg-red-900/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80rem] h-[80rem] bg-amber-600/8 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-32 left-32 w-96 h-96 bg-amber-700/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-32 right-32 w-80 h-80 bg-red-900/25 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80rem] h-[80rem] bg-amber-600/10 rounded-full blur-3xl animate-pulse"></div>
       
       {/* Gothic mist effects */}
-      <div className="absolute top-20 left-0 w-full h-32 bg-gradient-to-b from-amber-900/5 to-transparent gothic-mist"></div>
-      <div className="absolute bottom-20 left-0 w-full h-32 bg-gradient-to-t from-red-900/5 to-transparent gothic-mist" style={{ animationDelay: '5s' }}></div>
+      <div className="absolute top-20 left-0 w-full h-32 bg-gradient-to-b from-amber-900/8 to-transparent gothic-mist"></div>
+      <div className="absolute bottom-20 left-0 w-full h-32 bg-gradient-to-t from-red-900/8 to-transparent gothic-mist" style={{ animationDelay: '5s' }}></div>
     </div>
 
-    {/* Enhanced Gothic floating candle-like particles */}
-    <div className="absolute inset-0 pointer-events-none">
-      {[...Array(30)].map((_, i) => (
+    {/* Enhanced Gothic floating candle-like particles với z-index trung bình */}
+    <div className="absolute inset-0 pointer-events-none z-[2]">
+      {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute gothic-particle"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            width: Math.random() * 3 + 1 + 'px',
-            height: Math.random() * 6 + 4 + 'px',
+            width: Math.random() * 2 + 1 + 'px',
+            height: Math.random() * 4 + 3 + 'px',
             background: `linear-gradient(180deg, ${
               Math.random() > 0.5 ? '#FFC107' : '#FF8F00'
             } 0%, #D32F2F 50%, #8B0000 100%)`,
@@ -225,26 +225,41 @@ const PrologueChapter = () => (
       ))}
     </div>
 
+    {/* Main content với z-index cao và text shadow mạnh */}
     <motion.div
       initial={{ opacity: 0, y: 100, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 3, delay: 1, ease: "easeOut" }}
-      className="text-center max-w-6xl px-12 relative z-10"
+      className="text-center max-w-6xl px-8 relative z-[20]"
     >
       <motion.h1 
-        className="gothic-title gradient-gothic-gold text-8xl md:text-9xl xl:text-[12rem] font-bold mb-12 leading-tight"
+        className="gothic-title text-8xl md:text-9xl xl:text-[10rem] font-bold mb-8 leading-tight"
         initial={{ opacity: 0, scale: 0.7, rotateX: 45 }}
         animate={{ opacity: 1, scale: 1, rotateX: 0 }}
         transition={{ duration: 3.5, delay: 1.5, ease: "easeOut" }}
+        style={{
+          background: 'linear-gradient(45deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textShadow: '4px 4px 8px rgba(0,0,0,0.9), 8px 8px 16px rgba(0,0,0,0.7), 0 0 30px rgba(255, 215, 0, 0.8)'
+        }}
       >
         Câu Chuyện
       </motion.h1>
       
       <motion.h2 
-        className="gothic-script gradient-gothic-blood text-6xl md:text-7xl xl:text-8xl font-bold mb-16"
+        className="gothic-script text-5xl md:text-6xl xl:text-7xl font-bold mb-12"
         initial={{ opacity: 0, y: 80, rotateY: 30 }}
         animate={{ opacity: 1, y: 0, rotateY: 0 }}
         transition={{ duration: 3, delay: 2.5, ease: "easeOut" }}
+        style={{
+          background: 'linear-gradient(45deg, #DC143C 0%, #B22222 50%, #8B0000 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textShadow: '4px 4px 8px rgba(0,0,0,0.9), 0 0 25px rgba(220, 20, 60, 0.9)'
+        }}
       >
         Tình Yêu Gothic
       </motion.h2>
@@ -253,15 +268,18 @@ const PrologueChapter = () => (
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2.5, delay: 3.5, ease: "easeOut" }}
-        className="space-y-8"
+        className="space-y-6"
       >
-        <p className="gothic-body text-2xl md:text-3xl text-amber-200/90 leading-relaxed font-light">
+        <p className="gothic-body text-xl md:text-2xl xl:text-3xl leading-relaxed font-medium text-amber-100"
+           style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(255, 193, 7, 0.6)' }}>
           Trong bóng đêm huyền bí, mỗi câu chuyện tình yêu
         </p>
-        <p className="gothic-body text-xl md:text-2xl text-red-200/80 leading-relaxed font-light italic">
+        <p className="gothic-body text-lg md:text-xl xl:text-2xl leading-relaxed font-medium italic text-red-200"
+           style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(220, 20, 60, 0.6)' }}>
           đều có một khởi đầu đầy ma mị và quyến rũ.
         </p>
-        <p className="gothic-body text-lg md:text-xl text-amber-100/70 leading-relaxed font-light">
+        <p className="gothic-body text-base md:text-lg xl:text-xl leading-relaxed font-medium text-amber-50"
+           style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 10px rgba(255, 215, 0, 0.4)' }}>
           Đây là câu chuyện tình yêu Gothic của chúng tôi...
         </p>
       </motion.div>

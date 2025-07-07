@@ -33,32 +33,38 @@ html, body {
 .gothic-title {
   font-family: 'Cinzel', serif;
   font-weight: 700;
+  text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 8px 8px 16px rgba(0,0,0,0.7), 0 0 30px rgba(255, 215, 0, 0.8);
+  line-height: 1.1;
   letter-spacing: 0.1em;
-  text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 0 0 20px rgba(255, 193, 7, 0.3);
 }
 
 .gothic-script {
   font-family: 'Berkshire Swash', cursive;
   font-weight: 400;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 15px rgba(211, 47, 47, 0.4);
+  text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 0 0 25px rgba(220, 20, 60, 0.9);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
 }
 
 .gothic-body {
   font-family: 'Crimson Text', serif;
   font-weight: 400;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(255, 193, 7, 0.6);
+  line-height: 1.6;
 }
 
 .gothic-ancient {
   font-family: 'Uncial Antiqua', cursive;
   font-weight: 400;
-  text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(128, 0, 128, 0.8);
+  line-height: 1.4;
 }
 
 .gothic-creepy {
   font-family: 'Creepster', cursive;
   font-weight: 400;
-  text-shadow: 5px 5px 10px rgba(0,0,0,0.9), 0 0 25px rgba(255, 0, 0, 0.5);
+  text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 0 0 30px rgba(220, 20, 60, 0.9);
+  line-height: 1.3;
 }
 
 /* Gothic Color Variables */
@@ -216,18 +222,47 @@ html, body {
   animation: gothic-mist-drift 10s infinite linear;
 }
 
-/* Gothic Typography Responsive */
+/* Gothic Typography Responsive với improved mobile sizes */
 @media (max-width: 768px) {
   .gothic-title {
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(2.5rem, 12vw, 6rem);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(255, 215, 0, 0.8);
   }
   
   .gothic-script {
-    font-size: clamp(1.5rem, 6vw, 3rem);
+    font-size: clamp(1.8rem, 8vw, 4rem);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(220, 20, 60, 0.8);
   }
   
   .gothic-body {
-    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-size: clamp(1.1rem, 5vw, 2rem);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(255, 193, 7, 0.6);
+    line-height: 1.5;
+  }
+  
+  .gothic-ancient {
+    font-size: clamp(1.2rem, 6vw, 2.5rem);
+  }
+  
+  .gothic-creepy {
+    font-size: clamp(1rem, 4vw, 1.8rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .gothic-title {
+    font-size: clamp(2rem, 10vw, 4rem);
+    margin-bottom: 1rem;
+  }
+  
+  .gothic-script {
+    font-size: clamp(1.5rem, 7vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .gothic-body {
+    font-size: clamp(1rem, 4.5vw, 1.5rem);
+    margin-bottom: 1rem;
   }
 }
 
