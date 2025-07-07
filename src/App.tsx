@@ -22,7 +22,7 @@ function App() {
   // Enhanced Gothic scroll-driven navigation
   useEffect(() => {
     let lastScrollTime = 0;
-    const scrollThreshold = 250; // Slower for more dramatic Gothic effect
+    const scrollThreshold = 100; // Giảm từ 250ms xuống 100ms cho responsive hơn
 
     const handleWheel = (event: WheelEvent) => {
       event.preventDefault();
@@ -43,42 +43,39 @@ function App() {
         setCurrentChapter(chapters[currentIndex - 1].id as ChapterType);
       }
 
-      setTimeout(() => setIsTransitioning(false), 2500); // Longer Gothic transitions
+      setTimeout(() => setIsTransitioning(false), 1200); // Giảm từ 2500ms xuống 1200ms
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
   }, [currentChapter, isTransitioning]);
 
-  // Enhanced Gothic chapter transitions with cemetery-like effects
+  // Enhanced Gothic chapter transitions với cemetery-like effects
   const chapterVariants = {
     initial: (direction: string) => ({
       opacity: 0,
-      scale: 0.7,
-      y: direction === 'down' ? 120 : -120,
-      rotateX: direction === 'down' ? 30 : -30,
-      filter: 'blur(15px) brightness(0.2) contrast(1.5)',
+      scale: 0.9,
+      y: direction === 'down' ? 60 : -60,
+      filter: 'blur(8px)',
     }),
     in: {
       opacity: 1,
       scale: 1,
       y: 0,
-      rotateX: 0,
-      filter: 'blur(0px) brightness(1) contrast(1)',
+      filter: 'blur(0px)',
     },
     out: (direction: string) => ({
       opacity: 0,
-      scale: 1.3,
-      y: direction === 'down' ? -120 : 120,
-      rotateX: direction === 'down' ? -30 : 30,
-      filter: 'blur(20px) brightness(0.1) contrast(2)',
+      scale: 1.1,
+      y: direction === 'down' ? -60 : 60,
+      filter: 'blur(8px)',
     })
   };
 
   const chapterTransition = {
     type: "tween",
-    ease: [0.19, 1, 0.22, 1], // Dramatic Gothic easing
-    duration: 2.5
+    ease: [0.4, 0, 0.2, 1], // Easing optimize cho speed
+    duration: 1.2 // Giảm từ 2.5s xuống 1.2s
   };
 
   const renderChapterContent = () => {
@@ -181,17 +178,17 @@ const PrologueChapter = () => (
 
     {/* Professional minimalist content */}
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 2, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut" }}
       className="text-center max-w-4xl px-8 relative z-[20]"
     >
       {/* Main title với high contrast */}
       <motion.h1 
         className="font-bold mb-16 leading-none tracking-tight"
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2.5, delay: 0.5 }}
+        transition={{ duration: 1.5, delay: 0.2 }}
         style={{
           fontSize: 'clamp(4rem, 12vw, 8rem)',
           background: 'linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #FFFFFF 100%)',
@@ -210,7 +207,7 @@ const PrologueChapter = () => (
         className="font-light mb-12 tracking-widest"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 1.5 }}
+        transition={{ duration: 1, delay: 0.8 }}
         style={{
           fontSize: 'clamp(1.5rem, 4vw, 3rem)',
           color: '#E5E5E5',
@@ -225,7 +222,7 @@ const PrologueChapter = () => (
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 2.5 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
       >
         <p 
           className="font-medium mb-8"
@@ -253,13 +250,14 @@ const Chapter1 = () => (
     </div>
 
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
+      initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 2, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut" }}
       className="text-center max-w-4xl px-8 relative z-[20]"
     >
       <motion.h1 
         className="font-bold mb-8 leading-none"
+        transition={{ duration: 1, delay: 0.2 }}
         style={{
           fontSize: 'clamp(3rem, 10vw, 6rem)',
           color: '#FFFFFF',
@@ -274,7 +272,7 @@ const Chapter1 = () => (
         className="font-light leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        transition={{ delay: 0.6 }}
         style={{
           fontSize: 'clamp(1.2rem, 3vw, 2rem)',
           color: '#B0B0B0',
