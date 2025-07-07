@@ -30,49 +30,108 @@ function App() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Fullscreen API
-  const toggleFullscreen = async () => {
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-        setIsFullscreen(true);
-      } else {
-        await document.exitFullscreen();
-        setIsFullscreen(false);
-      }
-    } catch (error) {
-      console.error('Fullscreen error:', error);
+  // F11 Fullscreen suggestion
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      // Show F11 suggestion
+      alert('Press F11 for the best fullscreen experience!\n\nF11 provides true fullscreen mode without browser UI.');
+    } else {
+      // If already fullscreen, suggest F11 to exit
+      alert('Press F11 again to exit fullscreen mode.');
     }
   };
 
-  // Auto-enter fullscreen on load
+  // Force F11 fullscreen prompt
   useEffect(() => {
-    const autoFullscreen = async () => {
-      try {
-        // Wait for user interaction first (required by browsers)
-        const enterFullscreen = () => {
-          document.documentElement.requestFullscreen();
+    const forceF11 = () => {
+      // Show F11 instruction overlay
+      const overlay = document.createElement('div');
+      overlay.id = 'f11-overlay';
+      overlay.innerHTML = `
+        <div style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.95);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          font-family: 'Inter', sans-serif;
+          color: #d4af37;
+          backdrop-filter: blur(10px);
+        ">
+          <div style="text-align: center; max-width: 500px; padding: 40px;">
+            <div style="font-size: 4rem; margin-bottom: 20px;">⌨️</div>
+            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #ffffff;">Gothic Experience</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.6; color: #cccccc;">
+              For the ultimate immersive experience, please press <strong style="color: #d4af37;">F11</strong> to enter fullscreen mode
+            </p>
+            <div style="
+              display: inline-block;
+              padding: 15px 30px;
+              border: 2px solid #d4af37;
+              border-radius: 8px;
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: #d4af37;
+              background: rgba(212, 175, 55, 0.1);
+              animation: pulse 2s infinite;
+            ">
+              Press F11
+            </div>
+            <p style="font-size: 0.9rem; margin-top: 20px; color: #888888;">
+              Or click anywhere to continue without fullscreen
+            </p>
+          </div>
+        </div>
+        <style>
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+          }
+        </style>
+      `;
+      
+      document.body.appendChild(overlay);
+
+      // Listen for F11 key
+      const handleF11 = (e: KeyboardEvent) => {
+        if (e.key === 'F11') {
           setIsFullscreen(true);
-          document.removeEventListener('click', enterFullscreen);
-          document.removeEventListener('keydown', enterFullscreen);
-        };
-        
-        document.addEventListener('click', enterFullscreen, { once: true });
-        document.addEventListener('keydown', enterFullscreen, { once: true });
-      } catch (error) {
-        console.error('Auto fullscreen error:', error);
-      }
+          document.removeEventListener('keydown', handleF11);
+          overlay.remove();
+        }
+      };
+
+      // Listen for any click to bypass
+      const handleClick = () => {
+        document.removeEventListener('keydown', handleF11);
+        document.removeEventListener('click', handleClick);
+        overlay.remove();
+      };
+
+      // Listen for fullscreen change (when F11 is pressed)
+      const handleFullscreenChange = () => {
+        if (document.fullscreenElement || window.innerHeight === screen.height) {
+          setIsFullscreen(true);
+          overlay.remove();
+          document.removeEventListener('fullscreenchange', handleFullscreenChange);
+          document.removeEventListener('keydown', handleF11);
+          document.removeEventListener('click', handleClick);
+        }
+      };
+
+      document.addEventListener('keydown', handleF11);
+      document.addEventListener('click', handleClick);
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
     };
 
-    autoFullscreen();
-
-    // Listen for fullscreen changes
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    // Show F11 prompt after images load
+    const timer = setTimeout(forceF11, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   // Preload images
