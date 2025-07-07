@@ -150,19 +150,25 @@ function App() {
         </motion.div>
       </div>
 
-      {/* Enhanced Gothic Scroll Hint với z-index cao hơn */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-[100]">
+      {/* Subtle scroll indicator integrated into right edge */}
+      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-[50]">
         <motion.div
-          className="bg-black/95 backdrop-blur-xl rounded-full px-6 py-3 gothic-border gothic-shadow-gold"
-          animate={{ 
-            y: [0, -10, 0],
-            scale: [1, 1.05, 1],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center space-y-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ duration: 2 }}
         >
-          <p className="gothic-body text-amber-200/90 text-sm font-medium tracking-wide">
-            Cuộn để khám phá bóng tối...
-          </p>
+          {chapters.map((chapter, index) => {
+            const isActive = chapter.id === currentChapter;
+            return (
+              <div
+                key={chapter.id}
+                className={`w-1 h-8 transition-all duration-500 ${
+                  isActive ? 'bg-white/60' : 'bg-white/20'
+                }`}
+              />
+            );
+          })}
         </motion.div>
       </div>
 
