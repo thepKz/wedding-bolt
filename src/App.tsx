@@ -147,431 +147,487 @@ function App() {
 // Enhanced Gothic Chapter Components with Advanced Dark Romance Aesthetics
 
 const PrologueChapter = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
-    {/* Background image với overlay */}
-    <div className="absolute inset-0 z-[0]">
+  <div className="w-full h-screen flex relative overflow-hidden bg-black mobile-stack">
+    {/* Left side - Hero Image với professional composition */}
+    <div className="w-1/2 h-full relative overflow-hidden mobile-full-width">
       <img 
-        src="https://picsum.photos/1920/1080?random=1" 
-        alt="Gothic Background"
-        className="w-full h-full object-cover opacity-30"
+        src="https://picsum.photos/800/1080?random=1" 
+        alt="Gothic Wedding Hero"
+        className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-black/60"></div>
-    </div>
-
-    {/* Minimalist background với professional contrast */}
-    <div className="absolute inset-0 z-[1]">
-      {/* Single elegant light source */}
-      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-amber-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    {/* Reduced particles cho clean look */}
-    <div className="absolute inset-0 pointer-events-none z-[2]">
-      {[...Array(8)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{
-            left: `${20 + Math.random() * 60}%`,
-            top: `${20 + Math.random() * 60}%`,
-            width: '2px',
-            height: '6px',
-            background: 'linear-gradient(180deg, #FFD700 0%, #FFA500 100%)',
-            borderRadius: '50%',
-            animationDelay: Math.random() * 3 + 's',
-            animationDuration: '4s',
-            animationName: 'gothic-candle-flicker',
-            animationIterationCount: 'infinite',
-          }}
-        />
-      ))}
-    </div>
-
-    {/* Professional minimalist content */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className="text-center max-w-4xl px-8 relative z-[20]"
-    >
-      {/* Main title với high contrast */}
-      <motion.h1 
-        className="font-bold mb-16 leading-none tracking-tight"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.2 }}
-        style={{
-          fontSize: 'clamp(4rem, 12vw, 8rem)',
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #FFFFFF 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
-          filter: 'drop-shadow(0 4px 20px rgba(255, 215, 0, 0.3))'
-        }}
-      >
-        GOTHIC
-      </motion.h1>
+      {/* Gradient overlay cho professional blend */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-black/60"></div>
       
-      {/* Subtitle với elegant spacing */}
-      <motion.h2 
-        className="font-light mb-12 tracking-widest"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.8 }}
-        style={{
-          fontSize: 'clamp(1.5rem, 4vw, 3rem)',
-          color: '#E5E5E5',
-          textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)',
-          letterSpacing: '0.3em'
-        }}
-      >
-        WEDDING INVITATION
-      </motion.h2>
-      
-      {/* Single elegant call-to-action */}
+      {/* Decorative frame border */}
+      <div className="absolute inset-4 border border-white/20 pointer-events-none mobile-hidden"></div>
+    </div>
+
+    {/* Right side - Content với perfect typography hierarchy */}
+    <div className="w-1/2 h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-black relative mobile-full-width">
+      {/* Subtle particles cho ambiance */}
+      <div className="absolute inset-0 pointer-events-none mobile-hidden">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-2 bg-amber-400/40 rounded-full floating-element pulse-on-hover"
+            style={{
+              left: `${20 + Math.random() * 60}%`,
+              top: `${20 + Math.random() * 60}%`,
+              animationDelay: Math.random() * 4 + 's',
+              animationDuration: '8s',
+              animationName: 'gothic-candle-flicker',
+              animationIterationCount: 'infinite',
+            }}
+          />
+        ))}
+      </div>
+
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="text-left max-w-md px-12 relative z-20 mobile-text-center mobile-padding"
       >
-        <p 
-          className="font-medium mb-8"
-          style={{
-            fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
-            color: '#C0C0C0',
-            textShadow: '0 1px 5px rgba(0, 0, 0, 0.7)',
-            letterSpacing: '0.1em'
-          }}
+        {/* Typography hierarchy với professional fonts */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-caption text-amber-400/60 mb-6"
         >
-          Min & Vi
-        </p>
+          Wedding Invitation
+        </motion.div>
+
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+          className="font-heading text-display gradient-gold mb-8"
+        >
+          GOTHIC
+        </motion.h1>
         
-        {/* Elegant scroll indicator */}
-        <div className="w-px h-16 bg-gradient-to-b from-transparent via-amber-400 to-transparent mx-auto opacity-60"></div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="space-y-6"
+        >
+          <h2 className="font-heading text-subtitle text-gray-300">
+            Min & Vi
+          </h2>
+          
+          <div className="w-16 h-px bg-gradient-to-r from-amber-400 to-transparent"></div>
+          
+          <p className="font-accent text-body text-gray-400 leading-relaxed">
+            A story of eternal love written in shadows and starlight
+          </p>
+        </motion.div>
+
+        {/* Professional CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="mt-12"
+        >
+          <div className="text-caption text-amber-400/50">
+            Scroll to continue
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   </div>
 );
 
 const Chapter1 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
-    {/* Romantic background image */}
-    <div className="absolute inset-0 z-[0]">
+  <div className="w-full h-screen relative overflow-hidden">
+    {/* Full-screen hero image */}
+    <div className="absolute inset-0">
       <img 
         src="https://picsum.photos/1920/1080?random=2" 
-        alt="Our Story Background"
-        className="w-full h-full object-cover opacity-25"
+        alt="Our Story"
+        className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Professional dark overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
     </div>
 
-    <div className="absolute inset-0 z-[1]">
-      <div className="absolute top-1/2 left-1/3 w-[50rem] h-[50rem] bg-red-500/8 rounded-full blur-3xl"></div>
+    {/* Designer content card - positioned like magazine layout */}
+    <div className="absolute bottom-20 left-20 right-20 md:right-auto md:w-96 chapter-card-mobile">
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="interactive-card interactive-border bg-black/80 backdrop-blur-xl p-8 border border-white/10 mobile-padding"
+      >
+        {/* Chapter indicator */}
+        <div className="text-caption text-amber-400/60 mb-4 hover-underline">
+          Chapter One
+        </div>
+
+        <h1 className="font-heading text-hero gradient-gold mb-4 hover-glow">
+          OUR STORY
+        </h1>
+        
+        <div className="w-12 h-px bg-amber-400 mb-6"></div>
+        
+        <p className="font-accent text-body text-gray-300 leading-relaxed">
+          How we met in the mystic shadows of a coffee shop, where destiny 
+          intertwined our souls under candlelight. A moment that changed everything.
+        </p>
+
+        {/* Professional detail */}
+        <div className="mt-6 pt-4 border-t border-white/10">
+          <span className="text-caption text-amber-400/80 magnetic-hover touch-target">Min & Vi</span>
+        </div>
+      </motion.div>
     </div>
 
-    <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className="text-center max-w-4xl px-8 relative z-[20]"
-    >
-      <motion.h1 
-        className="font-bold mb-8 leading-none"
-        transition={{ duration: 1, delay: 0.2 }}
-        style={{
-          fontSize: 'clamp(3rem, 10vw, 6rem)',
-          color: '#FFFFFF',
-          textShadow: '0 0 30px rgba(255, 255, 255, 0.4)',
-          letterSpacing: '0.2em'
-        }}
-      >
-        OUR STORY
-      </motion.h1>
-      
-      <motion.p 
-        className="font-light leading-relaxed"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        style={{
-          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
-          color: '#B0B0B0',
-          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
-          letterSpacing: '0.1em',
-          maxWidth: '600px',
-          margin: '0 auto'
-        }}
-      >
-        How we met in the mystic shadows of a coffee shop, 
-        where destiny intertwined our souls under candlelight.
-      </motion.p>
-    </motion.div>
+    {/* Decorative corner elements */}
+    <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-white/20 mobile-hidden"></div>
+    <div className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-white/20 mobile-hidden"></div>
   </div>
 );
 
 const Chapter2 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
-    {/* Journey background image */}
-    <div className="absolute inset-0 z-[0]">
-      <img 
-        src="https://picsum.photos/1920/1080?random=3" 
-        alt="Journey Background"
-        className="w-full h-full object-cover opacity-20"
-      />
-      <div className="absolute inset-0 bg-black/75"></div>
-    </div>
+  <div className="w-full h-screen relative overflow-hidden bg-black">
+    {/* Grid layout - left content, right image */}
+    <div className="h-full flex split-layout">
+      {/* Left content panel */}
+      <div className="w-2/5 h-full bg-gradient-to-br from-gray-900 to-black flex items-center mobile-full-width">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ 
+            duration: 1.8, 
+            ease: [0.16, 1, 0.3, 1],
+            delay: 0.2 
+          }}
+          className="px-16 py-20 mobile-padding mobile-text-center"
+        >
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.5 
+            }}
+            className="text-caption text-purple-400/60 mb-6"
+          >
+            Chapter Two
+          </motion.div>
 
-    <div className="absolute inset-0 z-[1]">
-      <div className="absolute top-1/2 right-1/3 w-[50rem] h-[50rem] bg-purple-500/6 rounded-full blur-3xl"></div>
-    </div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1.5,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.7 
+            }}
+            className="font-heading text-display gradient-rose mb-8"
+          >
+            JOURNEY
+          </motion.h1>
+          
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ 
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 1.2 
+            }}
+            className="w-20 h-px bg-purple-400 mb-8 origin-left"
+          />
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 1.4 
+            }}
+            className="font-accent text-body-large text-gray-400 leading-relaxed mb-8 max-w-sm"
+          >
+            Every moment shared in moonlit adventures, building our eternal bond through time.
+          </motion.p>
 
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 2, ease: "easeOut" }}
-      className="text-center max-w-4xl px-8 relative z-[20]"
-    >
-      <motion.h1 
-        className="font-bold mb-8 leading-none"
-        style={{
-          fontSize: 'clamp(3rem, 10vw, 6rem)',
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #DDA0DD 50%, #FFFFFF 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          textShadow: '0 0 30px rgba(221, 160, 221, 0.4)',
-          letterSpacing: '0.2em'
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ 
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 1.8 
+            }}
+            className="text-caption text-purple-400/80"
+          >
+            Together forever
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Right image panel */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ 
+          duration: 2,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 0.3 
         }}
+        className="w-3/5 h-full relative mobile-full-width"
       >
-        JOURNEY
-      </motion.h1>
-      
-      <motion.p 
-        className="font-light leading-relaxed"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        style={{
-          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
-          color: '#B0B0B0',
-          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
-          letterSpacing: '0.1em',
-          maxWidth: '600px',
-          margin: '0 auto'
-        }}
-      >
-        Every moment shared in moonlit adventures,
-        building our eternal bond through time.
-      </motion.p>
-    </motion.div>
+        <img 
+          src="https://picsum.photos/1200/1080?random=3" 
+          alt="Journey"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/30"></div>
+        
+        {/* Floating decorative element */}
+        <motion.div 
+          initial={{ height: 0 }}
+          animate={{ height: "8rem" }}
+          transition={{ 
+            duration: 1.5,
+            ease: [0.16, 1, 0.3, 1],
+            delay: 2 
+          }}
+          className="absolute top-1/2 left-8 transform -translate-y-1/2 w-1 bg-purple-400/30 mobile-hidden"
+        />
+      </motion.div>
+    </div>
   </div>
 );
 
 const Chapter3 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/10 to-black">
-    {/* Promise background image */}
-    <div className="absolute inset-0 z-[0]">
+  <div className="w-full h-screen relative overflow-hidden">
+    {/* Asymmetric composition */}
+    <div className="absolute inset-0">
       <img 
         src="https://picsum.photos/1920/1080?random=4" 
-        alt="Promise Background"
-        className="w-full h-full object-cover opacity-20"
+        alt="Promise"
+        className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-black/75"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
     </div>
 
-    <div className="absolute inset-0 z-[1]">
-      <div className="absolute bottom-1/3 left-1/2 w-[50rem] h-[50rem] bg-blue-500/6 rounded-full blur-3xl"></div>
+    {/* Content positioned asymmetrically */}
+    <div className="absolute top-1/4 right-20 w-80">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5 }}
+        className="text-right"
+      >
+        <div className="text-blue-400/60 text-xs tracking-[0.3em] uppercase mb-4">
+          Chapter Three
+        </div>
+
+        <h1 
+          className="text-4xl font-bold mb-6 leading-tight"
+          style={{
+            background: 'linear-gradient(135deg, #FFFFFF 0%, #87CEEB 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          PROMISE
+        </h1>
+        
+        <div className="w-16 h-px bg-blue-400 ml-auto mb-6"></div>
+        
+        <p className="text-gray-300 leading-relaxed text-base">
+          Together we promise to walk through shadows and light, bound by eternal love.
+        </p>
+      </motion.div>
     </div>
 
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 2, ease: "easeOut" }}
-      className="text-center max-w-4xl px-8 relative z-[20]"
-    >
-      <motion.h1 
-        className="font-bold mb-8 leading-none"
-        style={{
-          fontSize: 'clamp(3rem, 10vw, 6rem)',
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #87CEEB 50%, #FFFFFF 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          textShadow: '0 0 30px rgba(135, 206, 235, 0.4)',
-          letterSpacing: '0.2em'
-        }}
-      >
-        PROMISE
-      </motion.h1>
-      
-      <motion.p 
-        className="font-light leading-relaxed"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        style={{
-          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
-          color: '#B0B0B0',
-          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
-          letterSpacing: '0.1em',
-          maxWidth: '600px',
-          margin: '0 auto'
-        }}
-      >
-        Together we promise to walk through shadows and light,
-        bound by eternal love.
-      </motion.p>
-    </motion.div>
+    {/* Geometric accent */}
+    <div className="absolute bottom-20 left-20 w-24 h-24 border border-blue-400/30 rotate-45"></div>
   </div>
 );
 
 const Chapter4 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-amber-900/15 to-black">
-    {/* Vows background image */}
-    <div className="absolute inset-0 z-[0]">
+  <div className="w-full h-screen relative overflow-hidden">
+    {/* Centered composition với sophisticated overlay */}
+    <div className="absolute inset-0">
       <img 
         src="https://picsum.photos/1920/1080?random=5" 
-        alt="Vows Background"
-        className="w-full h-full object-cover opacity-25"
+        alt="Wedding Vows"
+        className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Sophisticated gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60"></div>
     </div>
 
-    <div className="absolute inset-0 z-[1]">
-      <div className="absolute top-1/4 right-1/4 w-[50rem] h-[50rem] bg-amber-500/8 rounded-full blur-3xl"></div>
-    </div>
+    {/* Centered content card với elegant framing */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ 
+          duration: 2,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 0.2 
+        }}
+        className="text-center max-w-2xl px-8"
+      >
+        {/* Elegant frame border */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ 
+            duration: 1.5,
+            ease: [0.16, 1, 0.3, 1],
+            delay: 0.8 
+          }}
+          className="relative p-12 border border-amber-400/20"
+        >
+          <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-amber-400"></div>
+          <div className="absolute top-4 right-4 w-8 h-8 border-r border-t border-amber-400"></div>
+          <div className="absolute bottom-4 left-4 w-8 h-8 border-l border-b border-amber-400"></div>
+          <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-amber-400"></div>
 
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 2, ease: "easeOut" }}
-      className="text-center max-w-4xl px-8 relative z-[20]"
-    >
-      <motion.h1 
-        className="font-bold mb-8 leading-none"
-        style={{
-          fontSize: 'clamp(3rem, 10vw, 6rem)',
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #FFFFFF 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          textShadow: '0 0 30px rgba(255, 215, 0, 0.4)',
-          letterSpacing: '0.2em'
-        }}
-      >
-        VOWS
-      </motion.h1>
-      
-      <motion.p 
-        className="font-light leading-relaxed"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        style={{
-          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
-          color: '#B0B0B0',
-          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
-          letterSpacing: '0.1em',
-          maxWidth: '600px',
-          margin: '0 auto'
-        }}
-      >
-        Sacred words spoken under starlit skies,
-        sealing our hearts for eternity.
-      </motion.p>
-    </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 1.2 
+            }}
+            className="text-caption text-amber-400/60 mb-6"
+          >
+            Chapter Four
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1.8,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 1.4 
+            }}
+            className="font-heading text-display gradient-gold mb-8"
+          >
+            VOWS
+          </motion.h1>
+          
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ 
+              duration: 1.5,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 2 
+            }}
+            className="w-24 h-px bg-amber-400 mx-auto mb-8 origin-center"
+          />
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 2.3 
+            }}
+            className="font-accent text-body-large text-gray-300 leading-relaxed"
+          >
+            Sacred words spoken under starlit skies, sealing our hearts for eternity.
+          </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 2.8 
+            }}
+            className="mt-8 text-caption text-amber-400/80"
+          >
+            Min & Vi • Forever
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </div>
   </div>
 );
 
 const EpilogueChapter = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-800 to-black">
-    {/* Forever background image */}
-    <div className="absolute inset-0 z-[0]">
-      <img 
-        src="https://picsum.photos/1920/1080?random=6" 
-        alt="Forever Background"
-        className="w-full h-full object-cover opacity-15"
-      />
-      <div className="absolute inset-0 bg-black/80"></div>
-    </div>
-
-    <div className="absolute inset-0 z-[1]">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-white/5 rounded-full blur-3xl"></div>
-    </div>
-
-    {/* Minimal elegant particles */}
-    <div className="absolute inset-0 pointer-events-none z-[2]">
-      {[...Array(5)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{
-            left: `${30 + Math.random() * 40}%`,
-            top: `${30 + Math.random() * 40}%`,
-            width: '1px',
-            height: '4px',
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #C0C0C0 100%)',
-            borderRadius: '50%',
-            animationDelay: Math.random() * 4 + 's',
-            animationDuration: '6s',
-            animationName: 'gothic-candle-flicker',
-            animationIterationCount: 'infinite',
-          }}
+  <div className="w-full h-screen relative overflow-hidden bg-black">
+    {/* Sophisticated composition - image với elegant text overlay */}
+    <div className="h-full flex">
+      {/* Image section với sophisticated overlay */}
+      <div className="w-3/5 h-full relative">
+        <img 
+          src="https://picsum.photos/1400/1080?random=6" 
+          alt="Forever Together"
+          className="w-full h-full object-cover"
         />
-      ))}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/70"></div>
+        
+        {/* Elegant particle overlay */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white/40 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: Math.random() * 6 + 's',
+                animationDuration: '12s',
+                animationName: 'gothic-candle-flicker',
+                animationIterationCount: 'infinite',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Content section */}
+      <div className="w-2/5 h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          className="text-center px-12"
+        >
+          <div className="text-white/40 text-xs tracking-[0.3em] uppercase mb-8">
+            Epilogue
+          </div>
+
+          <h1 className="text-5xl font-bold text-white mb-12 leading-none tracking-widest">
+            FOREVER
+          </h1>
+          
+          <p className="text-gray-400 leading-relaxed text-base mb-12 max-w-xs">
+            Our love story continues into eternal darkness, where we shall dance forever in the moonlight.
+          </p>
+
+          {/* Elegant final ornament */}
+          <div className="flex items-center justify-center space-x-4">
+            <div className="w-12 h-px bg-white/20"></div>
+            <div className="w-2 h-2 bg-white/30 rounded-full"></div>
+            <div className="w-12 h-px bg-white/20"></div>
+          </div>
+
+          <div className="mt-8 text-white/60 text-sm tracking-wide">
+            The End
+          </div>
+        </motion.div>
+      </div>
     </div>
-
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 3, ease: "easeOut" }}
-      className="text-center max-w-4xl px-8 relative z-[20]"
-    >
-      <motion.h1 
-        className="font-bold mb-12 leading-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 1 }}
-        style={{
-          fontSize: 'clamp(3rem, 10vw, 6rem)',
-          color: '#FFFFFF',
-          textShadow: '0 0 50px rgba(255, 255, 255, 0.6)',
-          letterSpacing: '0.3em'
-        }}
-      >
-        FOREVER
-      </motion.h1>
-      
-      <motion.p 
-        className="font-light leading-relaxed mb-16"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        style={{
-          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
-          color: '#C0C0C0',
-          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
-          letterSpacing: '0.1em',
-          maxWidth: '600px',
-          margin: '0 auto 4rem'
-        }}
-      >
-        Our love story continues into eternal darkness,
-        where we shall dance forever in the moonlight.
-      </motion.p>
-
-      {/* Elegant final ornament */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 3, duration: 1.5 }}
-        className="flex justify-center"
-      >
-        <div className="w-20 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
-        <div className="w-3 h-3 bg-white/30 rounded-full mx-4 -mt-1.5"></div>
-        <div className="w-20 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
-      </motion.div>
-    </motion.div>
   </div>
 );
 
