@@ -1,9 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import './index.css';
-import InvitationSection from './sections/InvitationSection';
 
-type ChapterType = 'prologue' | 'chapter1' | 'chapter2' | 'chapter3' | 'chapter4' | 'chapter5' | 'epilogue';
+type ChapterType = 'prologue' | 'chapter1' | 'chapter2' | 'chapter3' | 'chapter4' | 'epilogue';
 
 const chapters = [
   { id: 'prologue', title: 'Lời Nguyền Đầu', subtitle: 'Trước khi bóng tối bao trùm...' },
@@ -11,7 +10,6 @@ const chapters = [
   { id: 'chapter2', title: 'Chương II', subtitle: 'Tình Yêu Nảy Nở Giữa Màn Đêm' },
   { id: 'chapter3', title: 'Chương III', subtitle: 'Hành Trình Cùng Nhau Trong Bóng Tối' },
   { id: 'chapter4', title: 'Chương IV', subtitle: 'Lời Thề Nguyện Vĩnh Cửu' },
-  { id: 'chapter5', title: 'Chương V', subtitle: 'Đêm Trọng Đại' },
   { id: 'epilogue', title: 'Tương Lai', subtitle: 'Mãi mãi trong bóng đêm...' }
 ] as const;
 
@@ -136,8 +134,6 @@ function App() {
         return <Chapter3 />;
       case 'chapter4':
         return <Chapter4 />;
-      case 'chapter5':
-        return <InvitationSection />;
       case 'epilogue':
         return <EpilogueChapter />;
       default:
