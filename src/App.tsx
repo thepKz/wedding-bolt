@@ -106,50 +106,6 @@ function App() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black gothic-no-select">
-      {/* Enhanced Gothic Chapter Progress Indicator với z-index cao hơn */}
-      <div className="fixed top-4 left-4 z-[100]">
-        <motion.div 
-          className="bg-black/95 backdrop-blur-xl rounded-lg p-6 gothic-border gothic-shadow-deep"
-          initial={{ opacity: 0, x: -100, scale: 0.8 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-        >
-          <h3 className="gothic-title text-amber-200 text-xl mb-2 tracking-widest">
-            {currentChapterInfo?.title}
-          </h3>
-          <p className="gothic-body text-amber-100/90 text-sm mb-4 leading-relaxed italic">
-            {currentChapterInfo?.subtitle}
-          </p>
-          <div className="flex space-x-2">
-            {chapters.map((chapter, index) => {
-              const isActive = chapter.id === currentChapter;
-              const isCompleted = index < chapters.findIndex(ch => ch.id === currentChapter);
-              
-              return (
-                <motion.div
-                  key={chapter.id}
-                  className={`w-3 h-3 transition-all duration-1000 ${
-                    isActive 
-                      ? 'bg-amber-400 gothic-shadow-gold scale-125 rounded-full' 
-                      : isCompleted
-                        ? 'bg-red-600/70 gothic-shadow-blood rounded-full'
-                        : 'bg-gray-600/40 rounded-sm'
-                  }`}
-                  animate={{ 
-                    scale: isActive ? 1.25 : 1,
-                    rotate: isActive ? [0, 360] : 0,
-                  }}
-                  transition={{
-                    scale: { duration: 0.5 },
-                    rotate: { duration: 8, repeat: Infinity, ease: "linear" }
-                  }}
-                />
-              );
-            })}
-          </div>
-        </motion.div>
-      </div>
-
       {/* Subtle scroll indicator integrated into right edge */}
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-[50]">
         <motion.div
@@ -280,7 +236,7 @@ const PrologueChapter = () => (
             letterSpacing: '0.1em'
           }}
         >
-          Minh & Hương
+          Min & Vi
         </p>
         
         {/* Elegant scroll indicator */}
