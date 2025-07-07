@@ -1,95 +1,143 @@
-"Thiệp mời vào tim anh" - Invitation to My Heart
+# Gothic Wedding Invitation
 
-🌟 Tổng quan ý tưởng:
-Tạo một webapp tương tác đóng vai trò là tấm thiệp điện tử có chủ đề tình cảm, lãng mạn, nhẹ nhàng. Phong cách chủ đạo là minimalist (tối giản, tinh tế, màu sắc nhẹ nhàng, dịu mắt). Ý nghĩa chính là mời người xem bước vào không gian "trái tim" của người gửi thông qua các hiệu ứng tương tác mượt mà, nhẹ nhàng nhưng bất ngờ, độc đáo và tinh tế.
+A professional, responsive Gothic-themed wedding invitation website built with React, TypeScript, and modern web technologies.
 
-🎨 Thiết kế giao diện chung:
-Màu sắc chính: trắng, pastel hồng nhạt, đỏ nhạt hoặc cam san hô nhẹ nhàng.
+## Overview
 
-Typography: font chữ tối giản, nét mảnh và nhẹ nhàng (VD: Poppins, Montserrat hoặc Comfortaa).
+This project is a sophisticated wedding invitation featuring elegant Gothic design elements, smooth animations, and professional typography. The website showcases a love story through multiple chapters with stunning visual compositions and interactive elements.
 
-Không gian âm: Rộng rãi, tạo cảm giác thoải mái, thông thoáng.
+## Features
 
-💖 Luồng trải nghiệm chi tiết cho người dùng:
-📌 Bước 1: Landing Screen
-Màn hình mở ra với giao diện đơn giản, nền trắng hoặc pastel dịu nhẹ.
+### Design & Visual
+- Professional Gothic aesthetic with elegant typography
+- Split-screen and magazine-style layouts
+- Sophisticated gradient text effects and color system
+- High-quality Picsum images with professional overlays
+- Minimalist design with high contrast for readability
 
-Chính giữa màn hình là hình ảnh trái tim nhỏ, thanh mảnh, chỉ với nét outline (SVG line).
+### Typography
+- Professional Google Fonts: Playfair Display, Inter, Crimson Text
+- Responsive typography system with mobile-first approach
+- CSS variables for consistent design system
+- Custom gradient text treatments
 
-Text nhỏ nhẹ nhàng dưới tim:
-"Nhấn nhẹ để bước vào tim anh".
+### Animations & Interactions
+- Smooth staggered animations with professional easing curves
+- Interactive hover effects and micro-interactions
+- Floating particle systems for ambiance
+- Scroll-driven chapter navigation
+- Performance-optimized animations
 
-Hiệu ứng tại bước này:
+### Responsive Design
+- Mobile-first responsive design
+- Adaptive layouts for all screen sizes
+- Touch device optimizations
+- Accessibility features including reduced motion support
+- Cross-browser compatibility
 
-Trái tim rung nhẹ (pulsate) bằng CSS Animation, gợi ý người dùng tương tác.
+## Technology Stack
 
-Khi hover, hiệu ứng scale nhẹ tăng một chút.
+- React 18 with TypeScript
+- Vite for fast development and building
+- Tailwind CSS for styling
+- Framer Motion for animations
+- Modern CSS with custom properties
 
-📌 Bước 2: Hiệu ứng tương tác mở cửa trái tim
-Khi người dùng click hoặc tap nhẹ lên trái tim, trái tim vẽ đường line (line-drawing animation) tạo hiệu ứng mở ra như một cánh cửa trái tim.
+## Chapter Structure
 
-Sau khi trái tim được "mở ra", sẽ tạo thành một cổng vào hình trái tim, tạo cảm giác như người dùng đang thực sự bước vào bên trong không gian tim của người gửi.
+1. **Prologue: Gothic** - Split-screen hero introduction
+2. **Chapter 1: Our Story** - Magazine-style content card
+3. **Chapter 2: Journey** - Grid layout with staggered animations
+4. **Chapter 3: Promise** - Asymmetric composition
+5. **Chapter 4: Vows** - Centered elegant framing
+6. **Epilogue: Forever** - Sophisticated final composition
 
-Hiệu ứng tại bước này:
+## Getting Started
 
-SVG path animation (line-drawing từ điểm bắt đầu đến điểm kết thúc nét vẽ, dùng GSAP hoặc Anime.js để mượt mà và mịn màng).
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn
 
-Khi mở trái tim xong, cổng trái tim được phóng lớn nhẹ nhàng từ trung tâm ra toàn màn hình, fade-out đường viền trái tim từ từ để mở ra giao diện chính bên trong.
+### Installation
 
-📌 Bước 3: Giao diện chính "không gian tim anh"
-Sau hiệu ứng mở, màn hình chuyển sang màu nền nhẹ nhàng, ấm áp (hồng nhạt, cam pastel), tạo cảm giác như bước vào một không gian riêng tư, gần gũi.
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd wedding-bolt
+```
 
-Thông điệp chính xuất hiện nhẹ nhàng ở chính giữa:
+2. Install dependencies
+```bash
+npm install
+```
 
-"Chào mừng em đến nơi sâu nhất trong tim anh".
+3. Start development server
+```bash
+npm run dev
+```
 
-Tiếp theo là lời mời thân mật và chân thành (ví dụ: lời yêu thương, lời ngỏ tình hoặc lời mời hẹn gặp).
+4. Open your browser and navigate to `http://localhost:5174`
 
-Hiệu ứng tại bước này:
+### Building for Production
 
-Chữ xuất hiện nhẹ nhàng từ dưới lên (fade-up animation).
+```bash
+npm run build
+```
 
-Background gradient hoặc hiệu ứng bokeh mờ nhạt, làm tăng cảm giác ấm áp, thân mật.
+The built files will be available in the `dist` directory.
 
-📌 Bước 4: Tương tác thêm (Optional)
-Có thể có thêm một nút nhỏ để người dùng phản hồi ngay lập tức (ví dụ "Trả lời lời mời" hoặc "Gửi phản hồi").
+## Project Structure
 
-Nút bấm tối giản với hiệu ứng hover nhẹ nhàng để người dùng thấy sự phản hồi tinh tế.
+```
+src/
+├── components/          # Reusable components
+├── sections/           # Page sections
+├── App.tsx            # Main application with chapter navigation
+├── main.tsx           # Application entry point
+└── index.css         # Global styles and design system
+```
 
-💡 Yêu cầu kỹ thuật rõ ràng:
-SVG line-drawing animation: sử dụng GSAP, Anime.js hoặc CSS stroke animation.
+## Design System
 
-Tương tác rõ ràng, nhẹ nhàng và trực quan: tránh hiệu ứng giật, lag hay gây khó chịu.
+### Colors
+- Charcoal: Primary dark background
+- Gold: Accent and highlight color
+- Ivory: Light text and contrast
+- Rose: Secondary accent
+- Gothic accents: Amber, Purple, Blue
 
-Responsive hoàn toàn cho cả mobile và desktop, ưu tiên trải nghiệm mobile.
+### Typography Hierarchy
+- Display: Large hero text (clamp 2.5rem - 6rem)
+- Hero: Section headers (clamp 2rem - 4.5rem)
+- Title: Subsection headers (clamp 1.5rem - 3rem)
+- Body: Content text with optimized readability
 
-Load nhanh và mượt, nhẹ (tránh ảnh hoặc assets nặng), chủ yếu sử dụng SVG và CSS.
+### Responsive Breakpoints
+- Mobile: 320px - 767px
+- Tablet: 768px - 1023px
+- Desktop: 1024px - 1439px
+- Large Desktop: 1440px+
 
-Thông điệp dễ dàng tùy biến (nếu có thể thì làm dưới dạng động để sửa thông tin dễ dàng).
+## Performance Features
 
-📌 Prompt cụ thể dành cho lập trình viên (hoặc designer):
-Prompt:
-"Create a minimalist yet emotionally engaging interactive webapp themed 'Invitation to My Heart'. The webapp acts as a romantic digital invitation with the following specifications:
+- Lazy loading optimizations
+- Efficient CSS animations
+- Responsive image handling
+- Reduced motion support for accessibility
+- Touch device optimizations
 
-Minimalist, clean, aesthetic design, pastel shades (white, light pink, or pastel coral).
+## Browser Support
 
-Initial screen with an outlined minimalist heart SVG icon subtly pulsating with CSS animation and gentle hover scale interaction, accompanied by subtle text prompt such as 'Tap gently to enter my heart'.
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-Interactive SVG/CSS line-drawing animation upon click/tap interaction, making the heart open smoothly, resembling a heart-shaped door opening, which then smoothly scales and transitions into a new view.
+## Author
 
-After interaction, reveal a warm, inviting message gently fading into view, set against a soft gradient or bokeh-like background, emphasizing intimacy and closeness.
+Created by **thepkz**
 
-Include smooth and elegant animation effects such as fade-in, subtle pulsation, SVG stroke animation, and soft scaling. Ensure animations evoke emotion (gentle, romantic, inviting).
+## License
 
-Optimize for full responsiveness across desktop and mobile with quick loading, minimal resource usage (prioritize SVG/CSS animations over heavy images).
-
-Optional: Include an interactive response button for user feedback, maintaining consistent minimalist aesthetics.
-Prioritize a smooth user experience, simplicity in design, uniqueness in interaction, and emotional engagement."
-
-🛠️ Công nghệ khuyên dùng:
-Frontend Framework: React hoặc Svelte (ưu tiên React).
-
-Animation Libraries: GSAP, Anime.js, Framer Motion.
-
-SVG creation: Figma hoặc Illustrator.
+This project is for educational and portfolio purposes.
 
