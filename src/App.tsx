@@ -19,8 +19,7 @@ const imageUrls = [
   'https://placehold.co/1920x1080?text=Our+Love+Story&bg=2d2d2d&color=ffffff',
   'https://placehold.co/1200x1080?text=Love+Journey&bg=4a4a4a&color=dda0dd',
   'https://placehold.co/1920x1080?text=Sacred+Promise&bg=3a3a3a&color=87ceeb',
-  'https://placehold.co/1920x1080?text=Wedding+Vows&bg=2a2a2a&color=ffd700',
-  'https://placehold.co/1400x1080?text=Forever+Together&bg=1f1f1f&color=ffffff'
+  'https://placehold.co/1920x1080?text=Wedding+Vows&bg=2a2a2a&color=ffd700'
 ];
 
 function App() {
@@ -688,68 +687,186 @@ const Chapter4 = () => (
 
 const EpilogueChapter = () => (
   <div className="w-full h-screen relative overflow-hidden bg-black">
-    {/* Sophisticated composition - image với elegant text overlay */}
-    <div className="h-full flex">
-      {/* Image section với sophisticated overlay */}
-      <div className="w-3/5 h-full relative">
-        <img 
-          src="https://placehold.co/1400x1080?text=Forever+Together&bg=1f1f1f&color=ffffff" 
-          alt="Forever Together"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/70"></div>
-        
-        {/* Elegant particle overlay */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-white/40 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: Math.random() * 6 + 's',
-                animationDuration: '12s',
-                animationName: 'gothic-candle-flicker',
-                animationIterationCount: 'infinite',
-              }}
-            />
-          ))}
-        </div>
+    {/* Gothic background với sophisticated composition */}
+    <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
+      
+      {/* Elegant particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-amber-400/30 rounded-full floating-element"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: Math.random() * 6 + 's',
+              animationDuration: '10s',
+              animationName: 'gothic-candle-flicker',
+              animationIterationCount: 'infinite',
+            }}
+          />
+        ))}
       </div>
+    </div>
 
-      {/* Content section */}
-      <div className="w-2/5 h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+    {/* RSVP Form Content */}
+    <div className="absolute inset-0 flex items-center justify-center p-8">
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-2xl"
+      >
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2 }}
-          className="text-center px-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1.5 }}
+          className="text-center mb-12"
         >
-          <div className="text-white/40 text-xs tracking-[0.3em] uppercase mb-8">
-            Epilogue
+          <div className="text-caption text-amber-400/60 mb-4">
+            Gothic Wedding Invitation
           </div>
-
-          <h1 className="text-5xl font-bold text-white mb-12 leading-none tracking-widest">
-            FOREVER
+          <h1 className="font-heading text-display gradient-gold mb-6">
+            RSVP
           </h1>
-          
-          <p className="text-gray-400 leading-relaxed text-base mb-12 max-w-xs">
-            Our love story continues into eternal darkness, where we shall dance forever in the moonlight.
+          <p className="font-accent text-body text-gray-300 max-w-lg mx-auto">
+            Join us in our eternal celebration of love. Your presence would honor our Gothic romance.
           </p>
-
-          {/* Elegant final ornament */}
-          <div className="flex items-center justify-center space-x-4">
-            <div className="w-12 h-px bg-white/20"></div>
-            <div className="w-2 h-2 bg-white/30 rounded-full"></div>
-            <div className="w-12 h-px bg-white/20"></div>
-          </div>
-
-          <div className="mt-8 text-white/60 text-sm tracking-wide">
-            The End
-          </div>
         </motion.div>
-      </div>
+
+        {/* RSVP Form */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8, duration: 1.5 }}
+          className="bg-black/60 backdrop-blur-xl p-8 border border-white/10 interactive-border"
+        >
+          <form className="space-y-6">
+            {/* Name Field */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.2, duration: 1 }}
+            >
+              <label className="block text-caption text-amber-400/80 mb-2">
+                Your Name
+              </label>
+              <input
+                type="text"
+                className="w-full bg-black/40 border border-white/20 rounded-sm px-4 py-3 text-white font-accent text-body focus:border-amber-400 focus:outline-none transition-colors duration-300"
+                placeholder="Enter your full name"
+              />
+            </motion.div>
+
+            {/* Email Field */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.4, duration: 1 }}
+            >
+              <label className="block text-caption text-amber-400/80 mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                className="w-full bg-black/40 border border-white/20 rounded-sm px-4 py-3 text-white font-accent text-body focus:border-amber-400 focus:outline-none transition-colors duration-300"
+                placeholder="your.email@example.com"
+              />
+            </motion.div>
+
+            {/* Attendance */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.6, duration: 1 }}
+            >
+              <label className="block text-caption text-amber-400/80 mb-4">
+                Will you join our Gothic celebration?
+              </label>
+              <div className="space-y-3">
+                <label className="flex items-center cursor-pointer group">
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="yes"
+                    className="sr-only"
+                  />
+                  <div className="w-4 h-4 border border-white/40 rounded-full mr-3 flex items-center justify-center group-hover:border-amber-400 transition-colors">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </div>
+                  <span className="text-gray-300 font-accent">Yes, I'll be there in the shadows</span>
+                </label>
+                <label className="flex items-center cursor-pointer group">
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="no"
+                    className="sr-only"
+                  />
+                  <div className="w-4 h-4 border border-white/40 rounded-full mr-3 flex items-center justify-center group-hover:border-amber-400 transition-colors">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </div>
+                  <span className="text-gray-300 font-accent">Unable to attend</span>
+                </label>
+              </div>
+            </motion.div>
+
+            {/* Message */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.8, duration: 1 }}
+            >
+              <label className="block text-caption text-amber-400/80 mb-2">
+                Message for the Couple
+              </label>
+              <textarea
+                rows={4}
+                className="w-full bg-black/40 border border-white/20 rounded-sm px-4 py-3 text-white font-accent text-body focus:border-amber-400 focus:outline-none transition-colors duration-300 resize-none"
+                placeholder="Share your wishes for our eternal journey..."
+              />
+            </motion.div>
+
+            {/* Submit Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2, duration: 1 }}
+              className="pt-4"
+            >
+              <button
+                type="submit"
+                className="btn-elegant w-full text-center touch-target"
+              >
+                Send Gothic Blessing
+              </button>
+            </motion.div>
+          </form>
+
+          {/* Elegant ornament */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 2.5, duration: 1 }}
+            className="flex items-center justify-center space-x-4 mt-8"
+          >
+            <div className="w-12 h-px bg-amber-400/30"></div>
+            <div className="w-2 h-2 bg-amber-400/50 rounded-full"></div>
+            <div className="w-12 h-px bg-amber-400/30"></div>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 3, duration: 1 }}
+            className="text-center text-caption text-white/40 mt-4"
+          >
+            Min & Vi • Gothic Romance
+          </motion.p>
+        </motion.div>
+      </motion.div>
     </div>
   </div>
 );
