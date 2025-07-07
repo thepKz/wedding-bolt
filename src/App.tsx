@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
+import './index.css';
 import InvitationSection from './sections/InvitationSection';
 
 type ChapterType = 'prologue' | 'chapter1' | 'chapter2' | 'chapter3' | 'chapter4' | 'chapter5' | 'epilogue';
@@ -14,10 +15,55 @@ const chapters = [
   { id: 'epilogue', title: 'Tương Lai', subtitle: 'Mãi mãi trong bóng đêm...' }
 ] as const;
 
+// Image URLs for preloading
+const imageUrls = [
+  'https://placehold.co/800x1080?text=Gothic+Romance&bg=1a1a1a&color=d4af37',
+  'https://placehold.co/1920x1080?text=Our+Love+Story&bg=2d2d2d&color=ffffff',
+  'https://placehold.co/1200x1080?text=Love+Journey&bg=4a4a4a&color=dda0dd',
+  'https://placehold.co/1920x1080?text=Sacred+Promise&bg=3a3a3a&color=87ceeb',
+  'https://placehold.co/1920x1080?text=Wedding+Vows&bg=2a2a2a&color=ffd700',
+  'https://placehold.co/1400x1080?text=Forever+Together&bg=1f1f1f&color=ffffff'
+];
+
 function App() {
   const [currentChapter, setCurrentChapter] = useState<ChapterType>('prologue');
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [scrollDirection, setScrollDirection] = useState<'down' | 'up'>('down');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+
+  // Preload images
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = imageUrls.map((url, index) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            // Update progress as images load
+            const progress = ((index + 1) / imageUrls.length) * 100;
+            setLoadingProgress(progress);
+            resolve(url);
+          };
+          img.onerror = reject;
+          img.src = url;
+        });
+      });
+
+      try {
+        await Promise.all(imagePromises);
+        // Small delay for smooth transition
+        setTimeout(() => {
+          setImagesLoaded(true);
+          console.log('All images preloaded successfully');
+        }, 500);
+      } catch (error) {
+        console.error('Error preloading images:', error);
+        setImagesLoaded(true); // Still proceed even if some images fail
+      }
+    };
+
+    preloadImages();
+  }, []);
 
   // Enhanced Gothic scroll-driven navigation
   useEffect(() => {
@@ -100,6 +146,87 @@ function App() {
   };
 
   const currentChapterInfo = chapters.find(ch => ch.id === currentChapter);
+
+  // Loading screen while images are preloading
+  if (!imagesLoaded) {
+    return (
+      <div className="w-full h-screen bg-black flex items-center justify-center relative overflow-hidden">
+        {/* Gothic background particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-amber-400/30 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: Math.random() * 4 + 's',
+                animationDuration: '6s',
+                animationName: 'gothic-candle-flicker',
+                animationIterationCount: 'infinite',
+              }}
+            />
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-center z-10"
+        >
+          {/* Gothic loading icon */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            className="w-16 h-16 border-2 border-amber-400/30 border-t-amber-400 rounded-full mx-auto mb-8"
+          />
+
+          {/* Loading title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="font-heading text-title gradient-gold mb-4"
+          >
+            Gothic Romance
+          </motion.h2>
+
+          {/* Progress bar */}
+          <div className="w-80 h-1 bg-white/10 rounded-full mx-auto mb-4 overflow-hidden">
+            <motion.div
+              className="h-full bg-gradient-to-r from-amber-400 to-gold-600 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: `${loadingProgress}%` }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            />
+          </div>
+
+          {/* Loading text */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-caption text-amber-400/60"
+          >
+            Preparing your wedding invitation... {Math.round(loadingProgress)}%
+          </motion.p>
+
+          {/* Elegant ornament */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="flex items-center justify-center space-x-4 mt-8"
+          >
+            <div className="w-8 h-px bg-amber-400/30"></div>
+            <div className="w-1 h-1 bg-amber-400/50 rounded-full"></div>
+            <div className="w-8 h-px bg-amber-400/30"></div>
+          </motion.div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black gothic-no-select">
