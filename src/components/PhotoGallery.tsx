@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface Photo {
   id: number;

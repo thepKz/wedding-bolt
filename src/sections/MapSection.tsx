@@ -268,7 +268,7 @@ const MapSection: React.FC<MapSectionProps> = ({ onComplete }) => {
       {/* Enhanced floating hearts with different types */}
       <div className="absolute inset-0 pointer-events-none">
         {floatingHearts.map(heart => (
-          <motion.div
+      <motion.div 
             key={heart.id}
             className={`absolute text-2xl ${
               heart.type === 'glow' ? 'filter drop-shadow-lg' :
@@ -362,7 +362,7 @@ const MapSection: React.FC<MapSectionProps> = ({ onComplete }) => {
         {/* Enhanced love orbs - NO IMAGES, pure text design */}
         <div className="relative w-full max-w-5xl mx-auto">
           {loveOrbs.map((orb, index) => (
-            <motion.div
+              <motion.div 
               key={orb.id}
               className={`absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2 ${
                 orb.collected ? 'pointer-events-none' : 'hover:scale-110'
@@ -403,7 +403,7 @@ const MapSection: React.FC<MapSectionProps> = ({ onComplete }) => {
                 </div>
 
                 {/* Pulse ring effect */}
-                <motion.div
+              <motion.div 
                   className="absolute -inset-4 border-2 border-white/30 rounded-full"
                   animate={{
                     scale: [1, 1.4, 1],
@@ -437,7 +437,7 @@ const MapSection: React.FC<MapSectionProps> = ({ onComplete }) => {
               </AnimatePresence>
             </motion.div>
           ))}
-        </div>
+            </div>
 
         {/* Enhanced welcome modal */}
         <AnimatePresence>
@@ -472,7 +472,7 @@ const MapSection: React.FC<MapSectionProps> = ({ onComplete }) => {
                   🚀 BẮT ĐẦU THU THẬP
                 </button>
               </motion.div>
-            </motion.div>
+        </motion.div>
           )}
         </AnimatePresence>
 
@@ -500,7 +500,7 @@ const MapSection: React.FC<MapSectionProps> = ({ onComplete }) => {
                   Bạn đã thu thập đủ năng lượng tình yêu! Chuẩn bị chuyển đến thiệp mời...
                 </p>
                 <div className="text-3xl mb-6">💕 ⚡ 🌟 💖 ✨</div>
-                <motion.div
+        <motion.div
                   className="text-white/80 text-lg"
                   animate={{ opacity: [0.6, 1, 0.6] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -523,7 +523,7 @@ const MapSection: React.FC<MapSectionProps> = ({ onComplete }) => {
         >
           🔄 RESET ENERGY
         </motion.button>
-      </div>
+          </div>
 
       {/* Enhanced Google Fonts */}
       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo:wght@400;600;700&family=Audiowide&family=Space+Mono:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />

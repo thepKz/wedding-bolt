@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const CountdownTimer = () => {
   // Wedding date: June 15, 2025, 10:00 AM
