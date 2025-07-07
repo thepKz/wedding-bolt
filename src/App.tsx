@@ -30,23 +30,27 @@ function App() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // F11 Fullscreen suggestion
-  const toggleFullscreen = () => {
-    if (!isFullscreen) {
-      // Show F11 suggestion
-      alert('Press F11 for the best fullscreen experience!\n\nF11 provides true fullscreen mode without browser UI.');
-    } else {
-      // If already fullscreen, suggest F11 to exit
-      alert('Press F11 again to exit fullscreen mode.');
+  // Fullscreen toggle function
+  const toggleFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+        setIsFullscreen(true);
+      } else {
+        await document.exitFullscreen();
+        setIsFullscreen(false);
+      }
+    } catch (error) {
+      console.error('Fullscreen error:', error);
     }
   };
 
-  // Force F11 fullscreen prompt
+  // Auto fullscreen start prompt
   useEffect(() => {
-    const forceF11 = () => {
-      // Show F11 instruction overlay
+    const showStartPrompt = () => {
+      // Show start button overlay
       const overlay = document.createElement('div');
-      overlay.id = 'f11-overlay';
+      overlay.id = 'start-overlay';
       overlay.innerHTML = `
         <div style="
           position: fixed;
@@ -64,73 +68,71 @@ function App() {
           backdrop-filter: blur(10px);
         ">
           <div style="text-align: center; max-width: 500px; padding: 40px;">
-            <div style="font-size: 4rem; margin-bottom: 20px;">⌨️</div>
-            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #ffffff;">Gothic Experience</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.6; color: #cccccc;">
-              For the ultimate immersive experience, please press <strong style="color: #d4af37;">F11</strong> to enter fullscreen mode
+            <div style="font-size: 4rem; margin-bottom: 20px;">🖤</div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #ffffff; font-weight: bold;">Gothic Wedding</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 40px; line-height: 1.6; color: #cccccc;">
+              Immerse yourself in our eternal love story
             </p>
-            <div style="
+            <button id="start-btn" style="
               display: inline-block;
-              padding: 15px 30px;
+              padding: 18px 40px;
               border: 2px solid #d4af37;
-              border-radius: 8px;
-              font-size: 1.5rem;
+              border-radius: 50px;
+              font-size: 1.4rem;
               font-weight: bold;
-              color: #d4af37;
-              background: rgba(212, 175, 55, 0.1);
+              color: #000000;
+              background: linear-gradient(45deg, #d4af37, #f4e4a1);
+              cursor: pointer;
+              transition: all 0.3s ease;
               animation: pulse 2s infinite;
-            ">
-              Press F11
-            </div>
-            <p style="font-size: 0.9rem; margin-top: 20px; color: #888888;">
-              Or click anywhere to continue without fullscreen
+              box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(212, 175, 55, 0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(212, 175, 55, 0.3)'">
+              🌟 Bắt Đầu 🌟
+            </button>
+            <p style="font-size: 0.9rem; margin-top: 25px; color: #888888;">
+              Click to enter fullscreen experience
             </p>
           </div>
         </div>
         <style>
           @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
+            50% { transform: scale(1.02); opacity: 0.9; }
           }
         </style>
       `;
       
       document.body.appendChild(overlay);
 
-      // Listen for F11 key
-      const handleF11 = (e: KeyboardEvent) => {
-        if (e.key === 'F11') {
+      // Auto fullscreen when start button clicked
+      const startBtn = overlay.querySelector('#start-btn');
+      const handleStartClick = async () => {
+        try {
+          // Request fullscreen
+          await document.documentElement.requestFullscreen();
           setIsFullscreen(true);
-          document.removeEventListener('keydown', handleF11);
+          overlay.remove();
+        } catch (error) {
+          console.error('Fullscreen error:', error);
+          // If fullscreen fails, still continue
+          setIsFullscreen(true);
           overlay.remove();
         }
       };
 
-      // Listen for any click to bypass
-      const handleClick = () => {
-        document.removeEventListener('keydown', handleF11);
-        document.removeEventListener('click', handleClick);
-        overlay.remove();
-      };
-
-      // Listen for fullscreen change (when F11 is pressed)
-      const handleFullscreenChange = () => {
-        if (document.fullscreenElement || window.innerHeight === screen.height) {
-          setIsFullscreen(true);
+      // Fallback: click anywhere to start
+      const handleAnyClick = (e: MouseEvent) => {
+        if (e.target !== startBtn) {
           overlay.remove();
-          document.removeEventListener('fullscreenchange', handleFullscreenChange);
-          document.removeEventListener('keydown', handleF11);
-          document.removeEventListener('click', handleClick);
         }
       };
 
-      document.addEventListener('keydown', handleF11);
-      document.addEventListener('click', handleClick);
-      document.addEventListener('fullscreenchange', handleFullscreenChange);
+      startBtn?.addEventListener('click', handleStartClick);
+      overlay.addEventListener('click', handleAnyClick);
     };
 
-    // Show F11 prompt after images load
-    const timer = setTimeout(forceF11, 1000);
+    // Show start prompt after images load
+    const timer = setTimeout(showStartPrompt, 1000);
     return () => clearTimeout(timer);
   }, []);
 
