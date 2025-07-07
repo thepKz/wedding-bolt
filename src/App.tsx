@@ -151,7 +151,7 @@ const PrologueChapter = () => (
     {/* Left side - Hero Image với professional composition */}
     <div className="w-1/2 h-full relative overflow-hidden mobile-full-width">
       <img 
-        src="https://picsum.photos/800/1080?random=1" 
+        src="https://placehold.co/800x1080?text=Gothic+Romance&bg=1a1a1a&color=d4af37" 
         alt="Gothic Wedding Hero"
         className="w-full h-full object-cover"
       />
@@ -245,7 +245,7 @@ const Chapter1 = () => (
     {/* Full-screen hero image */}
     <div className="absolute inset-0">
       <img 
-        src="https://picsum.photos/1920/1080?random=2" 
+        src="https://placehold.co/1920x1080?text=Our+Love+Story&bg=2d2d2d&color=ffffff" 
         alt="Our Story"
         className="w-full h-full object-cover"
       />
@@ -383,7 +383,7 @@ const Chapter2 = () => (
         className="w-3/5 h-full relative mobile-full-width"
       >
         <img 
-          src="https://picsum.photos/1200/1080?random=3" 
+          src="https://placehold.co/1200x1080?text=Love+Journey&bg=4a4a4a&color=dda0dd" 
           alt="Journey"
           className="w-full h-full object-cover"
         />
@@ -410,7 +410,7 @@ const Chapter3 = () => (
     {/* Asymmetric composition */}
     <div className="absolute inset-0">
       <img 
-        src="https://picsum.photos/1920/1080?random=4" 
+        src="https://placehold.co/1920x1080?text=Sacred+Promise&bg=3a3a3a&color=87ceeb" 
         alt="Promise"
         className="w-full h-full object-cover"
       />
@@ -459,7 +459,7 @@ const Chapter4 = () => (
     {/* Centered composition với sophisticated overlay */}
     <div className="absolute inset-0">
       <img 
-        src="https://picsum.photos/1920/1080?random=5" 
+        src="https://placehold.co/1920x1080?text=Wedding+Vows&bg=2a2a2a&color=ffd700" 
         alt="Wedding Vows"
         className="w-full h-full object-cover"
       />
@@ -570,7 +570,7 @@ const EpilogueChapter = () => (
       {/* Image section với sophisticated overlay */}
       <div className="w-3/5 h-full relative">
         <img 
-          src="https://picsum.photos/1400/1080?random=6" 
+          src="https://placehold.co/1400x1080?text=Forever+Together&bg=1f1f1f&color=ffffff" 
           alt="Forever Together"
           className="w-full h-full object-cover"
         />
