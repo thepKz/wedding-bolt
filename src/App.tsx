@@ -71,7 +71,7 @@ function App() {
             <div style="font-size: 4rem; margin-bottom: 20px;">🖤</div>
             <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #ffffff; font-weight: bold;">Gothic Wedding</h2>
             <p style="font-size: 1.3rem; margin-bottom: 40px; line-height: 1.6; color: #cccccc;">
-              Immerse yourself in our eternal love story
+              Scroll to start the story
             </p>
             <button id="start-btn" style="
               display: inline-block;
@@ -87,7 +87,7 @@ function App() {
               animation: pulse 2s infinite;
               box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
             " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(212, 175, 55, 0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(212, 175, 55, 0.3)'">
-              🌟 Bắt Đầu 🌟
+              Start
             </button>
             <p style="font-size: 0.9rem; margin-top: 25px; color: #888888;">
               Click to enter fullscreen experience
