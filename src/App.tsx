@@ -148,6 +148,16 @@ function App() {
 
 const PrologueChapter = () => (
   <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+    {/* Background image với overlay */}
+    <div className="absolute inset-0 z-[0]">
+      <img 
+        src="https://picsum.photos/1920/1080?random=1" 
+        alt="Gothic Background"
+        className="w-full h-full object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-black/60"></div>
+    </div>
+
     {/* Minimalist background với professional contrast */}
     <div className="absolute inset-0 z-[1]">
       {/* Single elegant light source */}
@@ -245,6 +255,16 @@ const PrologueChapter = () => (
 
 const Chapter1 = () => (
   <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    {/* Romantic background image */}
+    <div className="absolute inset-0 z-[0]">
+      <img 
+        src="https://picsum.photos/1920/1080?random=2" 
+        alt="Our Story Background"
+        className="w-full h-full object-cover opacity-25"
+      />
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
+
     <div className="absolute inset-0 z-[1]">
       <div className="absolute top-1/2 left-1/3 w-[50rem] h-[50rem] bg-red-500/8 rounded-full blur-3xl"></div>
     </div>
@@ -291,6 +311,16 @@ const Chapter1 = () => (
 
 const Chapter2 = () => (
   <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
+    {/* Journey background image */}
+    <div className="absolute inset-0 z-[0]">
+      <img 
+        src="https://picsum.photos/1920/1080?random=3" 
+        alt="Journey Background"
+        className="w-full h-full object-cover opacity-20"
+      />
+      <div className="absolute inset-0 bg-black/75"></div>
+    </div>
+
     <div className="absolute inset-0 z-[1]">
       <div className="absolute top-1/2 right-1/3 w-[50rem] h-[50rem] bg-purple-500/6 rounded-full blur-3xl"></div>
     </div>
@@ -339,6 +369,16 @@ const Chapter2 = () => (
 
 const Chapter3 = () => (
   <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/10 to-black">
+    {/* Promise background image */}
+    <div className="absolute inset-0 z-[0]">
+      <img 
+        src="https://picsum.photos/1920/1080?random=4" 
+        alt="Promise Background"
+        className="w-full h-full object-cover opacity-20"
+      />
+      <div className="absolute inset-0 bg-black/75"></div>
+    </div>
+
     <div className="absolute inset-0 z-[1]">
       <div className="absolute bottom-1/3 left-1/2 w-[50rem] h-[50rem] bg-blue-500/6 rounded-full blur-3xl"></div>
     </div>
@@ -387,6 +427,16 @@ const Chapter3 = () => (
 
 const Chapter4 = () => (
   <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-amber-900/15 to-black">
+    {/* Vows background image */}
+    <div className="absolute inset-0 z-[0]">
+      <img 
+        src="https://picsum.photos/1920/1080?random=5" 
+        alt="Vows Background"
+        className="w-full h-full object-cover opacity-25"
+      />
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
+
     <div className="absolute inset-0 z-[1]">
       <div className="absolute top-1/4 right-1/4 w-[50rem] h-[50rem] bg-amber-500/8 rounded-full blur-3xl"></div>
     </div>
@@ -435,6 +485,16 @@ const Chapter4 = () => (
 
 const EpilogueChapter = () => (
   <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-800 to-black">
+    {/* Forever background image */}
+    <div className="absolute inset-0 z-[0]">
+      <img 
+        src="https://picsum.photos/1920/1080?random=6" 
+        alt="Forever Background"
+        className="w-full h-full object-cover opacity-15"
+      />
+      <div className="absolute inset-0 bg-black/80"></div>
+    </div>
+
     <div className="absolute inset-0 z-[1]">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-white/5 rounded-full blur-3xl"></div>
     </div>
