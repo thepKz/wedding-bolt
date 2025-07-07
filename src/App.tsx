@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import './index.css';
+import RsvpSection from './sections/RsvpSection';
 
 type ChapterType = 'prologue' | 'chapter1' | 'chapter2' | 'chapter3' | 'chapter4' | 'epilogue';
 
@@ -134,13 +135,11 @@ function App() {
       case 'chapter4':
         return <Chapter4 />;
       case 'epilogue':
-        return <EpilogueChapter />;
+        return <RsvpSection />;
       default:
         return <PrologueChapter />;
     }
   };
-
-
 
   // Loading screen while images are preloading
   if (!imagesLoaded) {
@@ -681,191 +680,6 @@ const Chapter4 = () => (
           </motion.div>
         </motion.div>
       </motion.div>
-    </div>
-  </div>
-);
-
-const EpilogueChapter = () => (
-  <div className="w-full h-screen bg-black relative overflow-hidden">
-    {/* Gothic background với sophisticated composition */}
-    <div className="absolute inset-0 pointer-events-none z-0">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
-      {/* Elegant particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-amber-400/30 rounded-full floating-element"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: Math.random() * 6 + 's',
-              animationDuration: '10s',
-              animationName: 'gothic-candle-flicker',
-              animationIterationCount: 'infinite',
-            }}
-          />
-        ))}
-      </div>
-    </div>
-
-    {/* RSVP Form Content - Scrollable Container */}
-    <div className="absolute inset-0 flex items-center justify-center p-8 overflow-y-auto z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-2xl my-8"
-      >
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 1.5 }}
-        className="text-center mb-12"
-      >
-        <div className="text-caption text-amber-400/60 mb-4">
-          Gothic Wedding Invitation
-        </div>
-        <h1 className="font-heading text-display gradient-gold mb-6">
-          RSVP
-        </h1>
-        <p className="font-accent text-body text-gray-300 max-w-lg mx-auto">
-          Join us in our eternal celebration of love. Your presence would honor our Gothic romance.
-        </p>
-      </motion.div>
-
-      {/* RSVP Form */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.8, duration: 1.5 }}
-        className="bg-black/60 backdrop-blur-xl p-8 border border-white/10 interactive-border"
-      >
-        <form className="space-y-6">
-          {/* Name Field */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.2, duration: 1 }}
-          >
-            <label className="block text-caption text-amber-400/80 mb-2">
-              Your Name
-            </label>
-            <input
-              type="text"
-              className="w-full bg-black/40 border border-white/20 rounded-sm px-4 py-3 text-white font-accent text-body focus:border-amber-400 focus:outline-none transition-colors duration-300"
-              placeholder="Enter your full name"
-            />
-          </motion.div>
-
-          {/* Email Field */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.4, duration: 1 }}
-          >
-            <label className="block text-caption text-amber-400/80 mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              className="w-full bg-black/40 border border-white/20 rounded-sm px-4 py-3 text-white font-accent text-body focus:border-amber-400 focus:outline-none transition-colors duration-300"
-              placeholder="your.email@example.com"
-            />
-          </motion.div>
-
-          {/* Attendance */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.6, duration: 1 }}
-          >
-            <label className="block text-caption text-amber-400/80 mb-4">
-              Will you join our Gothic celebration?
-            </label>
-            <div className="space-y-3">
-              <label className="flex items-center cursor-pointer group">
-                <input
-                  type="radio"
-                  name="attendance"
-                  value="yes"
-                  className="sr-only"
-                />
-                <div className="w-4 h-4 border border-white/40 rounded-full mr-3 flex items-center justify-center group-hover:border-amber-400 transition-colors">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-                <span className="text-gray-300 font-accent">Yes, I'll be there in the shadows</span>
-              </label>
-              <label className="flex items-center cursor-pointer group">
-                <input
-                  type="radio"
-                  name="attendance"
-                  value="no"
-                  className="sr-only"
-                />
-                <div className="w-4 h-4 border border-white/40 rounded-full mr-3 flex items-center justify-center group-hover:border-amber-400 transition-colors">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-                <span className="text-gray-300 font-accent">Unable to attend</span>
-              </label>
-            </div>
-          </motion.div>
-
-          {/* Message */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.8, duration: 1 }}
-          >
-            <label className="block text-caption text-amber-400/80 mb-2">
-              Message for the Couple
-            </label>
-            <textarea
-              rows={4}
-              className="w-full bg-black/40 border border-white/20 rounded-sm px-4 py-3 text-white font-accent text-body focus:border-amber-400 focus:outline-none transition-colors duration-300 resize-none"
-              placeholder="Share your wishes for our eternal journey..."
-            />
-          </motion.div>
-
-          {/* Submit Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="pt-4"
-          >
-            <button
-              type="submit"
-              className="btn-elegant w-full text-center touch-target"
-            >
-              Send Gothic Blessing
-            </button>
-          </motion.div>
-        </form>
-
-        {/* Elegant ornament */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2.5, duration: 1 }}
-          className="flex items-center justify-center space-x-4 mt-8"
-        >
-          <div className="w-12 h-px bg-amber-400/30"></div>
-          <div className="w-2 h-2 bg-amber-400/50 rounded-full"></div>
-          <div className="w-12 h-px bg-amber-400/30"></div>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 3, duration: 1 }}
-          className="text-center text-caption text-white/40 mt-4"
-        >
-          Min & Vi • Gothic Romance
-        </motion.p>
-      </motion.div>
-    </motion.div>
     </div>
   </div>
 );
