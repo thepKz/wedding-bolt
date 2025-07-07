@@ -188,270 +188,368 @@ function App() {
 // Enhanced Gothic Chapter Components with Advanced Dark Romance Aesthetics
 
 const PrologueChapter = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden gothic-bg-cathedral">
-    {/* Enhanced Gothic cathedral-like background với z-index thấp */}
+  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+    {/* Minimalist background với professional contrast */}
     <div className="absolute inset-0 z-[1]">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/80"></div>
-      
-      {/* Multiple Gothic ambient light sources */}
-      <div className="absolute top-32 left-32 w-96 h-96 bg-amber-700/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-32 right-32 w-80 h-80 bg-red-900/25 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80rem] h-[80rem] bg-amber-600/10 rounded-full blur-3xl animate-pulse"></div>
-      
-      {/* Gothic mist effects */}
-      <div className="absolute top-20 left-0 w-full h-32 bg-gradient-to-b from-amber-900/8 to-transparent gothic-mist"></div>
-      <div className="absolute bottom-20 left-0 w-full h-32 bg-gradient-to-t from-red-900/8 to-transparent gothic-mist" style={{ animationDelay: '5s' }}></div>
+      {/* Single elegant light source */}
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-amber-500/10 rounded-full blur-3xl"></div>
     </div>
 
-    {/* Enhanced Gothic floating candle-like particles với z-index trung bình */}
+    {/* Reduced particles cho clean look */}
     <div className="absolute inset-0 pointer-events-none z-[2]">
-      {[...Array(20)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute gothic-particle"
+          className="absolute"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: Math.random() * 2 + 1 + 'px',
-            height: Math.random() * 4 + 3 + 'px',
-            background: `linear-gradient(180deg, ${
-              Math.random() > 0.5 ? '#FFC107' : '#FF8F00'
-            } 0%, #D32F2F 50%, #8B0000 100%)`,
+            left: `${20 + Math.random() * 60}%`,
+            top: `${20 + Math.random() * 60}%`,
+            width: '2px',
+            height: '6px',
+            background: 'linear-gradient(180deg, #FFD700 0%, #FFA500 100%)',
             borderRadius: '50%',
-            animationDelay: Math.random() * 6 + 's',
-            animationDuration: Math.random() * 4 + 3 + 's',
+            animationDelay: Math.random() * 3 + 's',
+            animationDuration: '4s',
+            animationName: 'gothic-candle-flicker',
+            animationIterationCount: 'infinite',
           }}
         />
       ))}
     </div>
 
-    {/* Main content với z-index cao và text shadow mạnh */}
+    {/* Professional minimalist content */}
     <motion.div
-      initial={{ opacity: 0, y: 100, scale: 0.8 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 3, delay: 1, ease: "easeOut" }}
-      className="text-center max-w-6xl px-8 relative z-[20]"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="text-center max-w-4xl px-8 relative z-[20]"
     >
+      {/* Main title với high contrast */}
       <motion.h1 
-        className="gothic-title text-8xl md:text-9xl xl:text-[10rem] font-bold mb-8 leading-tight"
-        initial={{ opacity: 0, scale: 0.7, rotateX: 45 }}
-        animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-        transition={{ duration: 3.5, delay: 1.5, ease: "easeOut" }}
+        className="font-bold mb-16 leading-none tracking-tight"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2.5, delay: 0.5 }}
         style={{
-          background: 'linear-gradient(45deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%)',
+          fontSize: 'clamp(4rem, 12vw, 8rem)',
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #FFFFFF 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
-          textShadow: '4px 4px 8px rgba(0,0,0,0.9), 8px 8px 16px rgba(0,0,0,0.7), 0 0 30px rgba(255, 215, 0, 0.8)'
+          textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
+          filter: 'drop-shadow(0 4px 20px rgba(255, 215, 0, 0.3))'
         }}
       >
-        Câu Chuyện
+        GOTHIC
       </motion.h1>
       
+      {/* Subtitle với elegant spacing */}
       <motion.h2 
-        className="gothic-script text-5xl md:text-6xl xl:text-7xl font-bold mb-12"
-        initial={{ opacity: 0, y: 80, rotateY: 30 }}
-        animate={{ opacity: 1, y: 0, rotateY: 0 }}
-        transition={{ duration: 3, delay: 2.5, ease: "easeOut" }}
+        className="font-light mb-12 tracking-widest"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, delay: 1.5 }}
         style={{
-          background: 'linear-gradient(45deg, #DC143C 0%, #B22222 50%, #8B0000 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          textShadow: '4px 4px 8px rgba(0,0,0,0.9), 0 0 25px rgba(220, 20, 60, 0.9)'
+          fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+          color: '#E5E5E5',
+          textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)',
+          letterSpacing: '0.3em'
         }}
       >
-        Tình Yêu Gothic
+        WEDDING INVITATION
       </motion.h2>
       
+      {/* Single elegant call-to-action */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2.5, delay: 3.5, ease: "easeOut" }}
-        className="space-y-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 2.5 }}
       >
-        <p className="gothic-body text-xl md:text-2xl xl:text-3xl leading-relaxed font-medium text-amber-100"
-           style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(255, 193, 7, 0.6)' }}>
-          Trong bóng đêm huyền bí, mỗi câu chuyện tình yêu
+        <p 
+          className="font-medium mb-8"
+          style={{
+            fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
+            color: '#C0C0C0',
+            textShadow: '0 1px 5px rgba(0, 0, 0, 0.7)',
+            letterSpacing: '0.1em'
+          }}
+        >
+          Minh & Hương
         </p>
-        <p className="gothic-body text-lg md:text-xl xl:text-2xl leading-relaxed font-medium italic text-red-200"
-           style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(220, 20, 60, 0.6)' }}>
-          đều có một khởi đầu đầy ma mị và quyến rũ.
-        </p>
-        <p className="gothic-body text-base md:text-lg xl:text-xl leading-relaxed font-medium text-amber-50"
-           style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 10px rgba(255, 215, 0, 0.4)' }}>
-          Đây là câu chuyện tình yêu Gothic của chúng tôi...
-        </p>
+        
+        {/* Elegant scroll indicator */}
+        <div className="w-px h-16 bg-gradient-to-b from-transparent via-amber-400 to-transparent mx-auto opacity-60"></div>
       </motion.div>
     </motion.div>
   </div>
 );
 
 const Chapter1 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden gothic-bg-crypt">
-    <div className="absolute inset-0">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/65"></div>
-      <div className="absolute top-32 left-32 w-80 h-80 bg-red-900/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-32 right-32 w-96 h-96 bg-amber-800/15 rounded-full blur-3xl animate-pulse"></div>
+  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <div className="absolute inset-0 z-[1]">
+      <div className="absolute top-1/2 left-1/3 w-[50rem] h-[50rem] bg-red-500/8 rounded-full blur-3xl"></div>
     </div>
 
     <motion.div
-      initial={{ opacity: 0, scale: 0.8, rotateY: -45 }}
-      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-      transition={{ duration: 3, ease: "easeOut" }}
-      className="text-center max-w-6xl px-12 relative z-10"
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="text-center max-w-4xl px-8 relative z-[20]"
     >
-      <motion.h1 className="gothic-title gradient-gothic-gold text-7xl md:text-8xl xl:text-9xl font-bold mb-8 tracking-wide">
-        CHƯƠNG I
+      <motion.h1 
+        className="font-bold mb-8 leading-none"
+        style={{
+          fontSize: 'clamp(3rem, 10vw, 6rem)',
+          color: '#FFFFFF',
+          textShadow: '0 0 30px rgba(255, 255, 255, 0.4)',
+          letterSpacing: '0.2em'
+        }}
+      >
+        OUR STORY
       </motion.h1>
       
-      <motion.h2 className="gothic-script gradient-gothic-blood text-4xl md:text-5xl xl:text-6xl font-bold mb-16">
-        Gặp Gỡ Định Mệnh Trong Bóng Đêm
-      </motion.h2>
-      
-      <motion.div className="space-y-8 text-2xl md:text-3xl leading-relaxed font-light">
-        <p className="gothic-body text-amber-200/90">Trong một quán cà phê cổ kính, âm u,</p>
-        <p className="gothic-body text-red-200/80">Dưới ánh sáng nến mờ ảo và huyền bí,</p>
-        <p className="gothic-body text-amber-100/80">Hai linh hồn đã tìm thấy nhau.</p>
-        <p className="gothic-script italic text-red-300/90 text-3xl">
-          Và định mệnh đã được viết trong bóng tối.
-        </p>
-      </motion.div>
+      <motion.p 
+        className="font-light leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        style={{
+          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+          color: '#B0B0B0',
+          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
+          letterSpacing: '0.1em',
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}
+      >
+        How we met in the mystic shadows of a coffee shop, 
+        where destiny intertwined our souls under candlelight.
+      </motion.p>
     </motion.div>
   </div>
 );
 
 const Chapter2 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden gothic-bg-dungeon">
-    <div className="absolute inset-0">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/65"></div>
-      <div className="absolute top-32 right-32 w-80 h-80 bg-red-800/25 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-32 left-32 w-96 h-96 bg-purple-900/20 rounded-full blur-3xl animate-pulse"></div>
+  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
+    <div className="absolute inset-0 z-[1]">
+      <div className="absolute top-1/2 right-1/3 w-[50rem] h-[50rem] bg-purple-500/6 rounded-full blur-3xl"></div>
     </div>
 
     <motion.div
-      initial={{ opacity: 0, x: -150, rotateX: 30 }}
-      animate={{ opacity: 1, x: 0, rotateX: 0 }}
-      transition={{ duration: 3, ease: "easeOut" }}
-      className="text-center max-w-6xl px-12 relative z-10"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="text-center max-w-4xl px-8 relative z-[20]"
     >
-      <motion.h1 className="gothic-title gradient-gothic-gold text-7xl md:text-8xl xl:text-9xl font-bold mb-8 tracking-wide">
-        CHƯƠNG II
+      <motion.h1 
+        className="font-bold mb-8 leading-none"
+        style={{
+          fontSize: 'clamp(3rem, 10vw, 6rem)',
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #DDA0DD 50%, #FFFFFF 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textShadow: '0 0 30px rgba(221, 160, 221, 0.4)',
+          letterSpacing: '0.2em'
+        }}
+      >
+        JOURNEY
       </motion.h1>
       
-      <motion.h2 className="gothic-script gradient-gothic-blood text-4xl md:text-5xl xl:text-6xl font-bold mb-16">
-        Tình Yêu Nảy Nở Giữa Màn Đêm
-      </motion.h2>
-      
-      <motion.div className="space-y-8 text-2xl md:text-3xl leading-relaxed font-light">
-        <p className="gothic-body text-amber-200/90">Những buổi tối xem phim kinh dị cùng nhau,</p>
-        <p className="gothic-body text-red-200/80">Những câu chuyện ma quái không bao giờ cạn.</p>
-        <p className="gothic-body text-purple-200/80">Từng khoảnh khắc trở nên ma mị,</p>
-        <p className="gothic-script italic text-red-300/90 text-3xl">
-          Khi có em trong bóng tối bên anh.
-        </p>
-      </motion.div>
+      <motion.p 
+        className="font-light leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        style={{
+          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+          color: '#B0B0B0',
+          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
+          letterSpacing: '0.1em',
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}
+      >
+        Every moment shared in moonlit adventures,
+        building our eternal bond through time.
+      </motion.p>
     </motion.div>
   </div>
 );
 
 const Chapter3 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden gothic-bg-dungeon">
-    <div className="absolute inset-0">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/65"></div>
-      <div className="absolute top-32 left-32 w-80 h-80 bg-purple-900/25 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-32 right-32 w-96 h-96 bg-indigo-900/20 rounded-full blur-3xl animate-pulse"></div>
+  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/10 to-black">
+    <div className="absolute inset-0 z-[1]">
+      <div className="absolute bottom-1/3 left-1/2 w-[50rem] h-[50rem] bg-blue-500/6 rounded-full blur-3xl"></div>
     </div>
 
     <motion.div
-      initial={{ opacity: 0, y: 150, scale: 0.7 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 3, ease: "easeOut" }}
-      className="text-center max-w-6xl px-12 relative z-10"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="text-center max-w-4xl px-8 relative z-[20]"
     >
-      <motion.h1 className="gothic-title gradient-gothic-gold text-7xl md:text-8xl xl:text-9xl font-bold mb-8 tracking-wide">
-        CHƯƠNG III
+      <motion.h1 
+        className="font-bold mb-8 leading-none"
+        style={{
+          fontSize: 'clamp(3rem, 10vw, 6rem)',
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #87CEEB 50%, #FFFFFF 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textShadow: '0 0 30px rgba(135, 206, 235, 0.4)',
+          letterSpacing: '0.2em'
+        }}
+      >
+        PROMISE
       </motion.h1>
       
-      <motion.h2 className="gothic-script gradient-gothic-royal text-4xl md:text-5xl xl:text-6xl font-bold mb-16">
-        Hành Trình Cùng Nhau Trong Bóng Tối
-      </motion.h2>
-      
-      <motion.div className="space-y-8 text-2xl md:text-3xl leading-relaxed font-light">
-        <p className="gothic-body text-amber-200/90">Cùng nhau khám phá những lâu đài cổ,</p>
-        <p className="gothic-body text-purple-200/80">Từng chuyến đi là một câu chuyện ma.</p>
-        <p className="gothic-body text-indigo-200/80">Dù đi đâu, trong bóng đêm nào,</p>
-        <p className="gothic-script italic text-purple-300/90 text-3xl">
-          Chỉ cần có nhau trong bóng tối là đủ.
-        </p>
-      </motion.div>
+      <motion.p 
+        className="font-light leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        style={{
+          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+          color: '#B0B0B0',
+          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
+          letterSpacing: '0.1em',
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}
+      >
+        Together we promise to walk through shadows and light,
+        bound by eternal love.
+      </motion.p>
     </motion.div>
   </div>
 );
 
 const Chapter4 = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden gothic-bg-treasure">
-    <div className="absolute inset-0">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/65"></div>
-      <div className="absolute top-32 right-32 w-80 h-80 bg-yellow-800/25 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-32 left-32 w-96 h-96 bg-amber-900/20 rounded-full blur-3xl animate-pulse"></div>
+  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-amber-900/15 to-black">
+    <div className="absolute inset-0 z-[1]">
+      <div className="absolute top-1/4 right-1/4 w-[50rem] h-[50rem] bg-amber-500/8 rounded-full blur-3xl"></div>
     </div>
 
     <motion.div
-      initial={{ opacity: 0, scale: 1.5, rotateZ: 15 }}
-      animate={{ opacity: 1, scale: 1, rotateZ: 0 }}
-      transition={{ duration: 3, ease: "easeOut" }}
-      className="text-center max-w-6xl px-12 relative z-10"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="text-center max-w-4xl px-8 relative z-[20]"
     >
-      <motion.h1 className="gothic-title gradient-gothic-gold text-7xl md:text-8xl xl:text-9xl font-bold mb-8 tracking-wide">
-        CHƯƠNG IV
+      <motion.h1 
+        className="font-bold mb-8 leading-none"
+        style={{
+          fontSize: 'clamp(3rem, 10vw, 6rem)',
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #FFFFFF 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textShadow: '0 0 30px rgba(255, 215, 0, 0.4)',
+          letterSpacing: '0.2em'
+        }}
+      >
+        VOWS
       </motion.h1>
       
-      <motion.h2 className="gothic-script gradient-gothic-copper text-4xl md:text-5xl xl:text-6xl font-bold mb-16">
-        Lời Thề Nguyện Vĩnh Cửu
-      </motion.h2>
-      
-      <motion.div className="space-y-8 text-2xl md:text-3xl leading-relaxed font-light">
-        <p className="gothic-body text-amber-200/90">Một đêm trăng tròn, anh quỳ xuống,</p>
-        <p className="gothic-body text-yellow-200/80">Với chiếc nhẫn vàng và linh hồn chân thành.</p>
-        <p className="gothic-body text-amber-100/80">"Em có muốn cùng anh trong bóng đêm vĩnh cửu không?"</p>
-        <p className="gothic-script italic text-yellow-300/90 text-3xl">
-          Và em thì thầm "Mãi mãi trong bóng tối".
-        </p>
-      </motion.div>
+      <motion.p 
+        className="font-light leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        style={{
+          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+          color: '#B0B0B0',
+          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
+          letterSpacing: '0.1em',
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}
+      >
+        Sacred words spoken under starlit skies,
+        sealing our hearts for eternity.
+      </motion.p>
     </motion.div>
   </div>
 );
 
 const EpilogueChapter = () => (
-  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden gothic-bg-mystic">
-    <div className="absolute inset-0">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/65"></div>
-      <div className="absolute top-32 left-32 w-80 h-80 bg-violet-900/25 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-32 right-32 w-96 h-96 bg-fuchsia-900/20 rounded-full blur-3xl animate-pulse"></div>
+  <div className="w-full h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-800 to-black">
+    <div className="absolute inset-0 z-[1]">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-white/5 rounded-full blur-3xl"></div>
+    </div>
+
+    {/* Minimal elegant particles */}
+    <div className="absolute inset-0 pointer-events-none z-[2]">
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          style={{
+            left: `${30 + Math.random() * 40}%`,
+            top: `${30 + Math.random() * 40}%`,
+            width: '1px',
+            height: '4px',
+            background: 'linear-gradient(180deg, #FFFFFF 0%, #C0C0C0 100%)',
+            borderRadius: '50%',
+            animationDelay: Math.random() * 4 + 's',
+            animationDuration: '6s',
+            animationName: 'gothic-candle-flicker',
+            animationIterationCount: 'infinite',
+          }}
+        />
+      ))}
     </div>
 
     <motion.div
-      initial={{ opacity: 0, rotateY: 180, scale: 0.5 }}
-      animate={{ opacity: 1, rotateY: 0, scale: 1 }}
-      transition={{ duration: 3.5, ease: "easeOut" }}
-      className="text-center max-w-6xl px-12 relative z-10"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 3, ease: "easeOut" }}
+      className="text-center max-w-4xl px-8 relative z-[20]"
     >
-      <motion.h1 className="gothic-title gradient-gothic-gold text-7xl md:text-8xl xl:text-9xl font-bold mb-8 tracking-wide">
-        TƯƠNG LAI
+      <motion.h1 
+        className="font-bold mb-12 leading-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, delay: 1 }}
+        style={{
+          fontSize: 'clamp(3rem, 10vw, 6rem)',
+          color: '#FFFFFF',
+          textShadow: '0 0 50px rgba(255, 255, 255, 0.6)',
+          letterSpacing: '0.3em'
+        }}
+      >
+        FOREVER
       </motion.h1>
       
-      <motion.h2 className="gothic-script gradient-gothic-ancient text-4xl md:text-5xl xl:text-6xl font-bold mb-16">
-        Mãi Mãi Trong Bóng Đêm
-      </motion.h2>
-      
-      <motion.div className="space-y-8 text-2xl md:text-3xl leading-relaxed font-light">
-        <p className="gothic-body text-amber-200/90">Câu chuyện Gothic chưa kết thúc,</p>
-        <p className="gothic-body text-violet-200/80">Mà chỉ mới bắt đầu trong bóng tối.</p>
-        <p className="gothic-body text-purple-200/80">Với tình yêu ma mị và hy vọng huyền bí,</p>
-        <p className="gothic-script italic text-violet-300/90 text-3xl">
-          Chúng tôi viết tiếp từng trang trong bóng đêm vĩnh cửu.
-        </p>
+      <motion.p 
+        className="font-light leading-relaxed mb-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        style={{
+          fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+          color: '#C0C0C0',
+          textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
+          letterSpacing: '0.1em',
+          maxWidth: '600px',
+          margin: '0 auto 4rem'
+        }}
+      >
+        Our love story continues into eternal darkness,
+        where we shall dance forever in the moonlight.
+      </motion.p>
+
+      {/* Elegant final ornament */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 3, duration: 1.5 }}
+        className="flex justify-center"
+      >
+        <div className="w-20 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+        <div className="w-3 h-3 bg-white/30 rounded-full mx-4 -mt-1.5"></div>
+        <div className="w-20 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
       </motion.div>
     </motion.div>
   </div>
